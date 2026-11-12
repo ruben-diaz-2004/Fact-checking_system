@@ -81,15 +81,22 @@ def trocear_documento(doc_id, texto):
     actual, palabras = [], 0
     for i, (seccion, _) in enumerate(frases):
         cambio_seccion = actual and seccion != frases[actual[-1]][0]
-        lleno = palabras + n[i] > OBJETIVO
-        if actual and (lleno or (cambio_seccion and palabras >= MINIMO * OBJETIVO)):
+        # Se cierra el trozo si con la frase nueva pasa del objetivo... salvo que el trozo
+        # sea aún muy corto y quepa sin pasar del máximo (así no salen trozos diminutos
+        # cuando detrás viene una frase muy larga)
+        excede = palabras + n[i] > OBJETIVO
+        cerrar = excede and (palabras >= MINIMO * OBJETIVO or palabras + n[i] > MAXIMO * OBJETIVO)
+        if actual and (cerrar or (cambio_seccion and palabras >= MINIMO * OBJETIVO)):
             trozos.append(actual)
             # Solapamiento: el nuevo trozo empieza con las últimas frases del anterior
-            # (solo si seguimos en la misma sección)
+            # (solo si seguimos en la misma sección, y nunca con frases muy largas,
+            # para no repetir medio trozo)
             solape, p = [], 0
             if not cambio_seccion:
                 for j in reversed(actual):
                     if p >= SOLAPE * OBJETIVO or len(solape) + 1 >= len(actual):
+                        break
+                    if n[j] > 1.5 * SOLAPE * OBJETIVO:
                         break
                     solape.insert(0, j)
                     p += n[j]
