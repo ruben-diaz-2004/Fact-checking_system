@@ -1,24 +1,14 @@
-# Datos y utilidades
 numpy
 pandas
 requests
 tqdm
-
-# Preprocesado (spaCy, como en la asignatura)
 spacy
-
-# Representaciones dispersas y recuperación (como en Text Vectorization I)
+contractions
 gensim
 bm25s
-
-# Gráficas
 matplotlib
 seaborn
-
-# Descarga y limpieza de textos
 beautifulsoup4
 lxml
 yt-dlp
-
-# Para usar el entorno en los notebooks de VS Code
 ipykernel
