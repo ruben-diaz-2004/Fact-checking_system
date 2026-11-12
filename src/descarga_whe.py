@@ -159,10 +159,16 @@ def limpiar_markdown(md):
                 autor = linea[7:].strip()
         md = md[cabecera.end():]
 
-    lineas = []
+    lineas, saltar = [], False
     for linea in md.split("\n"):
         if re.match(r"^#+\s*(Editorial Review|Bibliography|About the Author)", linea):
             break                                           # a partir de aquí ya no es el artículo
+        if re.match(r"^#+\s*(Sponsorship Message|Book Promotion)", linea):
+            saltar = True                                   # bloque publicitario (con su CSS): se salta...
+            continue
+        if saltar and not re.match(r"^#{2,6}\s", linea):
+            continue                                        # ...hasta la siguiente sección
+        saltar = False
         if "![" in linea or linea.startswith("_Authored by"):
             continue                                        # imágenes y firma
         m = re.match(r"^(#{2,6})\s*(.+)$", linea)
