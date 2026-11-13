@@ -1,20 +1,21 @@
-# Datos descargados y procesados (no se suben: pesan y tienen derechos de autor)
-data/raw/
-data/processed/
+   # Datos descargados y procesados (no se suben: pesan y tienen derechos de autor)
+   data/raw/
+   data/processed/
 
-# Ficheros del sistema operativo
-.DS_Store
-Thumbs.db
-*:Zone.Identifier
+   # Ficheros del sistema operativo (y metadatos que Windows añade al copiar a WSL)
+   .DS_Store
+   Thumbs.db
+   *:Zone.Identifier
+   *:mshield
 
-# Python
-__pycache__/
-*.pyc
-.venv/
-venv/
+   # Python
+   __pycache__/
+   *.pyc
+   .venv/
+   venv/
 
-# Jupyter
-.ipynb_checkpoints/
+   # Jupyter
+   .ipynb_checkpoints/
 
-# Claves y configuración local
-.env
+   # Claves y configuración local
+   .env
