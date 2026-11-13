@@ -1,0 +1,256 @@
+vid,doc_id,titulo,profundidad,rama,categoria,origen,etiqueta,dudoso,motivo,conjunto
+v001,wiki_2478495,1108 Demeter,3,Category:Metamorphoses in Greek mythology,Category:Demeter,nuevo,fuera,,Asteroide que solo lleva el nombre de una diosa,validacion
+v002,wiki_20775,Midas,1,Category:Metamorphoses in Greek mythology,Category:Metamorphoses in Greek mythology,nuevo,dentro,,,validacion
+v003,wiki_58495728,Aconteus,2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v004,wiki_20123255,"High, Just-as-High, and Third",1,Category:Characters in Norse mythology,Category:Characters in Norse mythology,nuevo,dentro,,,validacion
+v005,wiki_17986829,The Intervention of the Sabine Women,1,Category:Rape of the Sabine women,Category:Rape of the Sabine women,queries,fuera,,"Cuadro moderno (David, 1799)",validacion
+v006,wiki_40189,Founding of Rome,0,(raíz),Category:Roman mythology,queries,dentro,,,validacion
+v007,wiki_606116,"L'Amour et Psyché, enfants",2,Category:Greek myths,Category:Cupid and Psyche,queries,fuera,,"Cuadro moderno (Bouguereau, 1890)",validacion
+v008,wiki_77425,Athamas,3,Category:Characters in Greek mythology,Category:Mythological Boeotians,nuevo,dentro,,,validacion
+v009,wiki_78594,Penthesilea,2,Category:Characters in Greek mythology,Category:Women in Greek mythology,queries,dentro,,,validacion
+v010,wiki_1601078,Al-Lat,3,Category:Textiles in Greek mythology,Category:Al-Lat,queries,fuera,,Otra mitología (diosa árabe preislámica),validacion
+v011,wiki_594,Apollo,2,Category:Metamorphoses in Greek mythology,Category:Shapeshifters in Greek mythology,queries,dentro,,,validacion
+v012,wiki_87298,Fáfnir,1,Category:Völsung cycle,Category:Völsung cycle,queries,dentro,,,validacion
+v013,wiki_29067,Satyr,2,Category:Characters in Greek mythology,Category:Companions of Dionysus,nuevo,dentro,,,validacion
+v014,wiki_71485,Nisse (folklore),3,Category:Characters in Norse mythology,Category:Nixies (folklore),queries,fuera,,Folklore escandinavo posterior,validacion
+v015,wiki_77296726,Phalerus (Argonaut),3,Category:Characters in Greek mythology,Category:Argonauts,nuevo,dentro,,,validacion
+v016,wiki_67449475,Gorgo (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,queries,dentro,,,validacion
+v017,wiki_40042600,Nympholepsy,3,Category:Characters in Greek mythology,Category:Nymphs,nuevo,dentro,,,validacion
+v018,wiki_19073727,Diana and Callisto,3,Category:Characters in Greek mythology,Category:Callisto (mythology),nuevo,fuera,,Cuadro moderno (Tiziano),validacion
+v019,wiki_72585691,Pyrrhus (mythology),2,Category:Metamorphoses in Greek mythology,Category:Metamorphoses into inanimate objects in Greek mythology,queries,dentro,,,validacion
+v020,wiki_88664,Jötunn,3,Category:Characters in Norse mythology,Category:Jötnar,queries,dentro,,,validacion
+v021,wiki_53601873,Hippodamia (wife of Autonous),2,Category:Characters in Greek mythology,Category:Women in Greek mythology,nuevo,dentro,,,validacion
+v022,wiki_75173,Rhadamanthus,3,Category:Characters in Greek mythology,Category:Princes in Greek mythology,nuevo,dentro,,,validacion
+v023,wiki_83036,Python (mythology),3,Category:Characters in Greek mythology,Category:Chthonic beings,queries,dentro,,,validacion
+v024,wiki_78330960,Lyon cup,3,Category:Characters in Roman mythology,Category:Mercury (mythology),queries,dentro,sí,"Copa galorromana antigua con dioses (Mercurio, Cernunnos): religión antigua, aunque más celta que romana",validacion
+v025,wiki_7411820,Pallas (son of Evander),2,Category:Mythology of Heracles,Category:Children of Heracles,nuevo,dentro,,,validacion
+v026,wiki_59083633,Troilus and Cressida,3,Category:Characters in Greek mythology,Category:Agamemnon,queries,fuera,,Obra de teatro moderna (Shakespeare),validacion
+v027,wiki_772119,Household deity,2,Category:Characters in Roman mythology,Category:Roman deities,queries,fuera,sí,"Concepto general de muchas religiones, no de nuestras mitologías",validacion
+v028,wiki_60103870,Amphissa (daughter of Macareus),3,Category:Characters in Greek mythology,Category:Princesses in Greek mythology,nuevo,dentro,,,validacion
+v029,wiki_78881,Pan (god),2,Category:Metamorphoses in Greek mythology,Category:Shapeshifters in Greek mythology,queries,dentro,,,validacion
+v030,wiki_58499042,Dorus (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v031,wiki_63992152,Prometheus (Orozco),2,Category:Mythology of Heracles,Category:Prometheus,queries,fuera,,Mural moderno (Orozco),validacion
+v032,wiki_82076044,Baton (mythology),0,(raíz),Category:Greek mythology,nuevo,dentro,,,validacion
+v033,wiki_33128637,Cepheus (son of Aleus),3,Category:Characters in Greek mythology,Category:Mythological Arcadians,nuevo,dentro,,,validacion
+v034,wiki_995728,Beowulf (hero),3,Category:Characters in Norse mythology,Category:Heroes in Norse myths and legends,queries,dentro,sí,"Leyenda germánica muy ligada a la nórdica, como Fáfnir y el ciclo de los Volsungos",validacion
+v035,wiki_176649,Hyperion (Titan),3,Category:Characters in Greek mythology,Category:Metamorphoses characters,nuevo,dentro,,,validacion
+v036,wiki_2841033,Gortyna,1,Category:Places in Greek mythology,Category:Places in Greek mythology,queries,dentro,,,validacion
+v037,wiki_77220633,Pisus,2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v038,wiki_8208957,Arisbe (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v039,wiki_860317,The Elves and the Shoemaker,3,Category:Characters in Norse mythology,Category:Elves,queries,fuera,,Cuento de los hermanos Grimm,validacion
+v040,wiki_39928800,Harpans kraft,3,Category:Characters in Greek mythology,Category:Orpheus,queries,fuera,,Balada medieval escandinava,validacion
+v041,wiki_1162830,Mesatis,1,Category:Places in Greek mythology,Category:Places in Greek mythology,nuevo,dentro,,,validacion
+v042,wiki_19868945,Rhinemaidens,2,Category:Völsung cycle,Category:Der Ring des Nibelungen,queries,fuera,,Personajes inventados por Wagner (ópera),validacion
+v043,wiki_55138595,Heroön at Nemea,2,Category:Places in Greek mythology,Category:Nemea,queries,dentro,,,validacion
+v044,wiki_14502854,Marpesia,3,Category:Mythology of Heracles,Category:Queens of the Amazons,nuevo,dentro,,,validacion
+v045,wiki_31323642,Vénus et Adonis,3,Category:Mythology of Heracles,Category:Adonis,queries,fuera,,Ópera moderna,validacion
+v046,wiki_10477,Eos,2,Category:Odyssey,Category:Characters in the Odyssey,queries,dentro,,,validacion
+v047,wiki_72615057,Erinoma,3,Category:Characters in Greek mythology,Category:Mythological Cypriots,nuevo,dentro,,,validacion
+v048,wiki_84896,Orcus,3,Category:Death in Greek mythology,Category:Hades,queries,dentro,,,validacion
+v049,wiki_67564451,Thermodosa,2,Category:Characters in Greek mythology,Category:Women in Greek mythology,nuevo,dentro,,,validacion
+v050,wiki_58509840,Tarphe,2,Category:Iliad,Category:Places in the Iliad,queries,dentro,,,validacion
+v051,wiki_22537,Odysseus,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,queries,dentro,,,validacion
+v052,wiki_52419008,Chryse and Argyre,1,Category:Places in Greek mythology,Category:Places in Greek mythology,queries,dentro,sí,"Islas legendarias de fuentes antiguas (Plinio, Mela), en la categoría de lugares míticos",validacion
+v053,wiki_2529,Alexandra,3,Category:Metamorphoses in Greek mythology,Category:Hera,queries,fuera,,Nombre de pila,validacion
+v054,wiki_27684871,"Diana Fountain, Bushy Park",2,Category:Characters in Roman mythology,Category:Diana (mythology),queries,fuera,,Fuente del siglo XVII,validacion
+v055,wiki_24959971,Opus (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,queries,dentro,,,validacion
+v056,wiki_67812938,Physius,3,Category:Characters in Greek mythology,Category:Mythological Arcadians,nuevo,dentro,,,validacion
+v057,wiki_5355670,Greek underworld,2,Category:Death in Greek mythology,Category:Greek underworld,queries,dentro,,,validacion
+v058,wiki_26187906,Peirous,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,nuevo,dentro,,,validacion
+v059,wiki_2492613,Anastasia of Sirmium,2,Category:Characters in Roman mythology,Category:Legendary Roman people,queries,fuera,,Santa cristiana,validacion
+v060,wiki_53628236,Alegenor,3,Category:Characters in Greek mythology,Category:Mythological Boeotians,nuevo,dentro,,,validacion
+v061,wiki_78563,Hippothoon,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,nuevo,dentro,,,validacion
+v062,wiki_67280833,Autochthon (Atlantis),3,Category:Characters in Greek mythology,Category:Atlanteans,nuevo,dentro,,,validacion
+v063,wiki_1167863,Sinfjötli,1,Category:Völsung cycle,Category:Völsung cycle,nuevo,dentro,,,validacion
+v064,wiki_1945173,Roman goose,3,Category:Characters in Roman mythology,Category:Juno (mythology),queries,fuera,,Raza de oca,validacion
+v065,wiki_68671271,Ormenius (mythology),1,Category:Mythology of Heracles,Category:Mythology of Heracles,nuevo,dentro,,,validacion
+v066,wiki_77802,Orestes,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,nuevo,dentro,,,validacion
+v067,wiki_78470,Giants (Greek mythology),1,Category:Mythology of Heracles,Category:Mythology of Heracles,nuevo,dentro,,,validacion
+v068,wiki_8005712,Philomela (mother of Patroclus),2,Category:Characters in Greek mythology,Category:Women in Greek mythology,nuevo,dentro,,,validacion
+v069,wiki_54259573,Agenor (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v070,wiki_67812902,Phassus (mythology),3,Category:Characters in Greek mythology,Category:Mythological Arcadians,nuevo,dentro,,,validacion
+v071,wiki_76439870,Baths of Hercules,3,Category:Characters in Roman mythology,Category:Hercules,nuevo,fuera,,Edificio que solo lleva el nombre de Hércules,validacion
+v072,wiki_159852,Janus,3,Category:Characters in Roman mythology,Category:Roman gods,queries,dentro,,,validacion
+v073,wiki_84693,Promachus,2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v074,wiki_248189,Gaia hypothesis,1,Category:Words and phrases derived from Greek mythology,Category:Words and phrases derived from Greek mythology,nuevo,fuera,,Hipótesis científica que lleva el nombre de Gaia,validacion
+v075,wiki_54413195,Cercyon of Eleusis,3,Category:Greek myths,Category:Labours of Theseus,nuevo,dentro,,,validacion
+v076,wiki_59941887,Laodamia (daughter of Acastus),2,Category:Characters in Greek mythology,Category:Suicides in Greek mythology,nuevo,dentro,,,validacion
+v077,wiki_596258,Burislav,3,Category:Characters in Norse mythology,Category:Kings in Norse mythology and legends,nuevo,fuera,sí,"Rey histórico de las sagas, no mitológico",validacion
+v078,wiki_18013,Loki,3,Category:Characters in Norse mythology,Category:Norse gods,queries,dentro,,,validacion
+v079,wiki_10477593,Amphictyonis,3,Category:Characters in Greek mythology,Category:Greek goddesses,nuevo,dentro,,,validacion
+v080,wiki_30007236,Phialo,2,Category:Characters in Greek mythology,Category:Women in Greek mythology,nuevo,dentro,,,validacion
+v081,wiki_80585,Aerope,2,Category:Death in Greek mythology,Category:Deaths by drowning in Greek mythology,nuevo,dentro,,,validacion
+v082,wiki_1621206,Delphic Sibyl,3,Category:Characters in Greek mythology,Category:Sibyls,nuevo,dentro,,,validacion
+v083,wiki_1273,Augustus,3,Category:Aeneid,Category:Characters in Book VI of the Aeneid,queries,fuera,,Emperador romano (biografía histórica),validacion
+v084,wiki_2473334,Cauld Lad of Hylton,3,Category:Characters in Norse mythology,Category:Elves,queries,fuera,,Fantasma del folklore inglés,validacion
+v085,wiki_78559,Alope,2,Category:Characters in Greek mythology,Category:Women in Greek mythology,queries,dentro,,,validacion
+v086,wiki_12477951,Cave of Euripides,1,Category:Places in Greek mythology,Category:Places in Greek mythology,nuevo,fuera,sí,"Lugar ligado a Eurípides, no a los mitos",validacion
+v087,wiki_67230,Helios,1,Category:Mythology of Heracles,Category:Mythology of Heracles,queries,dentro,,,validacion
+v088,wiki_6271028,Catullus 68,3,Category:Trojan War,Category:Trojan War literature,queries,dentro,,,validacion
+v089,wiki_3362080,Memnon,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,queries,dentro,,,validacion
+v090,wiki_54217580,Cycnus (son of Poseidon),3,Category:Characters in Greek mythology,Category:Metamorphoses characters,nuevo,dentro,,,validacion
+v091,wiki_72811484,Laius (Crete),3,Category:Characters in Greek mythology,Category:Mythological Cretans,nuevo,dentro,,,validacion
+v092,wiki_35757826,Caucon,2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v093,wiki_70736524,Corynaeus,3,Category:Places in Greek mythology,Category:Trojans,nuevo,dentro,,,validacion
+v094,wiki_66768124,Phanus (mythology),3,Category:Characters in Greek mythology,Category:Mythological Cretans,nuevo,dentro,,,validacion
+v095,wiki_13207,Hector,2,Category:Characters in Greek mythology,Category:Greek mythological heroes,queries,dentro,,,validacion
+v096,wiki_84247,Halitherses,2,Category:Odyssey,Category:Characters in the Odyssey,nuevo,dentro,,,validacion
+v097,wiki_67560968,Cyllene (mythology),2,Category:Characters in Greek mythology,Category:Set index articles on Greek mythology,nuevo,dentro,,,validacion
+v098,wiki_3346603,The World's Desire,2,Category:Trojan War,Category:Cultural depictions of Helen of Troy,queries,fuera,,Novela moderna (1890) que inventa la historia,validacion
+v099,wiki_68703,Semele,3,Category:Characters in Greek mythology,Category:Phoenician characters in Greek mythology,nuevo,dentro,,,validacion
+v100,wiki_66247465,Shield of Aeneas,1,Category:Aeneid,Category:Aeneid,nuevo,dentro,,,validacion
+r001,wiki_69592688,1922 regnal list of Ethiopia,3,,,revision,fuera,,,largos
+r002,wiki_37753,Isis,3,,,revision,fuera,,,largos
+r003,wiki_23672,Parthenon,3,,,revision,dentro,,Templo antiguo de Atenea,largos
+r004,wiki_23487767,The Tempest,3,,,revision,fuera,,,largos
+r005,wiki_77362492,Daimonion,3,,,revision,fuera,,,largos
+r006,wiki_113536,Gawain,3,,,revision,fuera,,,largos
+r007,wiki_22570875,The Odyssey (1968 miniseries),2,,,revision,fuera,,,largos
+r008,wiki_241533,Iguvine Tablets,3,,,revision,dentro,,Inscripciones religiosas antiguas (religión romana arcaica),largos
+r009,wiki_11024036,God of War III,3,,,revision,fuera,,,largos
+r010,wiki_9896,Elf,3,,,revision,dentro,sí,Elfos de la mitología nórdica y el folklore germánico (dudoso),largos
+r011,wiki_33275549,Sophia (Gnosticism),3,,,revision,fuera,,,largos
+r012,wiki_486195,L'Orfeo,2,,,revision,fuera,,,largos
+r013,wiki_340002,"Pantheon, Rome",3,,,revision,dentro,sí,Templo antiguo de todos los dioses (dudoso: sobre todo arquitectura),largos
+r014,wiki_40191243,Eternal feminine,2,,,revision,fuera,,,largos
+r015,wiki_2603530,Alexander Romance,3,,,revision,fuera,,,largos
+r016,wiki_17741990,La Fábula de Polifemo y Galatea,3,,,revision,fuera,,,largos
+r017,wiki_70798,Valkyrie,2,,,revision,dentro,,Figura central de la mitología nórdica,largos
+r018,wiki_5570108,Six Metamorphoses after Ovid,3,,,revision,fuera,,,largos
+r019,wiki_33642554,Scipio Africanus,3,,,revision,fuera,,,largos
+r020,wiki_428953,Les Troyens,2,,,revision,fuera,,,largos
+r021,wiki_3053877,The Settlers III,3,,,revision,fuera,,,largos
+r022,wiki_14028950,Influences on Tolkien,1,,,revision,fuera,,,largos
+r023,wiki_75861,Cato the Elder,3,,,revision,fuera,,,largos
+r024,wiki_49508,Die Walküre,2,,,revision,fuera,,,largos
+r025,wiki_30250971,Titans in popular culture,2,,,revision,fuera,,,largos
+r026,wiki_53086,Satanic Verses,3,,,revision,fuera,,,largos
+r027,wiki_77414,Antinous,3,,,revision,fuera,,,largos
+r028,wiki_181657,Lady of the Lake,3,,,revision,fuera,,,largos
+r029,wiki_1184487,Nāga,3,,,revision,fuera,,,largos
+r030,wiki_79653593,Chaldean Hekate,2,,,revision,fuera,,,largos
+r031,wiki_347922,Fabia gens,3,,,revision,fuera,,,largos
+r032,wiki_31381,Der Ring des Nibelungen,2,,,revision,fuera,,,largos
+r033,wiki_21275,Niobium,3,,,revision,fuera,,,largos
+r034,wiki_838139,Lycurgus,2,,,revision,fuera,sí,"Historia legendaria de Esparta, no mitología",largos
+r035,wiki_255485,Hrothgar,3,,,revision,dentro,,Rey semilegendario de Beowulf y las sagas nórdicas,largos
+r036,wiki_179601,Tullus Hostilius,3,,,revision,fuera,sí,"Historia legendaria de Roma, no mitología",largos
+r037,wiki_396412,Changeling,3,,,revision,fuera,,,largos
+r038,wiki_43983548,Le Rouet d'Omphale,3,,,revision,fuera,,,azar
+r039,wiki_914436,Shield-maiden,1,,,revision,dentro,,Figura de las sagas legendarias nórdicas,azar
+r040,wiki_77133780,Oresteia (Xenakis),3,,,revision,fuera,,,azar
+r041,wiki_52478650,Lampetho,2,,,revision,fuera,sí,Personaje de un poema medieval,azar
+r042,wiki_1524862,221 Eos,3,,,revision,fuera,,,azar
+r043,wiki_17388744,Phradmon,3,,,revision,fuera,,,azar
+r044,wiki_54025843,Scoob!,3,,,revision,fuera,,,azar
+r045,wiki_79375830,The Reconciliation of Helen and Paris After His Defeat by Menelaus,2,,,revision,fuera,,,azar
+r046,wiki_81006,Tithonus,3,,,revision,dentro,,Personaje mítico (el asteroide es una mención secundaria),azar
+r047,wiki_2524334,Delphic Hymns,3,,,revision,dentro,,Himnos antiguos a Apolo en Delfos,azar
+r048,wiki_69571801,Temple of Atargatis,3,,,revision,fuera,,,azar
+r049,wiki_23577508,Adonism,3,,,revision,fuera,,,azar
+r050,wiki_235876,Ouroboros,0,,,revision,fuera,,,azar
+r051,wiki_21179140,Cleopatra (daughter of Idas),2,,,revision,dentro,,Personaje mítico (hija de Idas),azar
+r052,wiki_2624565,Iphigenia in Tauris (Goethe),3,,,revision,fuera,,,azar
+r053,wiki_1102098,Plutus (play),3,,,revision,dentro,,Comedia antigua de Aristófanes,azar
+r054,wiki_741075,123 Brunhild,2,,,revision,fuera,,,azar
+r055,wiki_6610964,Gauthildr Algautsdóttir,3,,,revision,dentro,sí,Personaje de la Heimskringla (dudoso),azar
+r056,wiki_75924634,Sacerdos Matris Deum Magnae Idaeae,3,,,revision,dentro,,Sacerdocio antiguo del culto de Cibeles en Roma,azar
+r057,wiki_47274448,Africa (goddess),1,,,revision,fuera,sí,Diosa bereber y personificación,azar
+r058,wiki_40437565,Diana Bathing with her Nymphs with Actaeon and Callisto,3,,,revision,fuera,,,azar
+r059,wiki_47433,Atlas (architecture),2,,,revision,fuera,,,azar
+r060,wiki_3641845,Constantina,2,,,revision,fuera,,,azar
+r061,wiki_9824141,The Triumph of Beauty,2,,,revision,fuera,,,azar
+r062,wiki_3155341,The Phoenician Women,3,,,revision,dentro,,Tragedia antigua de Eurípides,azar
+r063,wiki_54594846,Alepotrypa Cave,3,,,revision,fuera,,,azar
+r064,wiki_58870513,Temple of Salus,3,,,revision,dentro,sí,Templo antiguo romano de la diosa Salus (dudoso),azar
+r065,wiki_2646107,Baetyl,0,,,revision,fuera,sí,Concepto general de muchas religiones,azar
+r066,wiki_380625,Svarog,3,,,revision,fuera,,,azar
+r067,wiki_48025175,Prometheus (Zach),2,,,revision,fuera,,,azar
+r068,wiki_25783324,Helium planet,3,,,revision,fuera,,,azar
+r069,wiki_4083994,Tarnhelm,2,,,revision,fuera,,,azar
+r070,wiki_331929,Heraclides,3,,,revision,fuera,,,azar
+r071,wiki_58495792,Eureaioi,2,,,revision,fuera,,,azar
+r072,wiki_61461891,Mythos (book),1,,,revision,fuera,,,azar
+r073,wiki_204601,Till We Have Faces,2,,,revision,fuera,,,azar
+r074,wiki_3800407,Four Crowned Martyrs,2,,,revision,fuera,,,azar
+r075,wiki_32110,Urd (Oh My Goddess!),2,,,revision,fuera,,,azar
+r076,wiki_177453,Trow (folklore),3,,,revision,fuera,,,azar
+r077,wiki_507854,Helium flash,3,,,revision,fuera,,,azar
+g001,wiki_453182,Nixie (folklore),,,,revision,fuera,sí,"Folklore germánico posterior, como el nisse",regla
+g002,wiki_9363023,The God Beneath the Sea,,,,revision,fuera,,Novela moderna,regla
+g003,wiki_33755622,Laurin (poem),,,,revision,fuera,sí,"Poema alemán medieval (leyenda germánica continental, no nórdica)",regla
+g004,wiki_7906594,The Sea of Monsters,,,,revision,fuera,,Novela moderna (Percy Jackson),regla
+g005,wiki_212523,Pegasus (constellation),,,,revision,fuera,,Constelación que lleva el nombre,regla
+g006,wiki_86621,Nemausus,,,,revision,fuera,sí,Dios galo (religión galorromana),regla
+g007,wiki_57745289,Cultural depictions of Medea,,,,revision,fuera,,Cultura popular,regla
+g008,wiki_6111753,The Lightning Thief,,,,revision,fuera,,Novela moderna (Percy Jackson),regla
+g009,wiki_80238641,Hamr (folklore),,,,revision,dentro,,,regla
+g010,wiki_82226,Thule Society,,,,revision,fuera,,Sociedad ocultista del siglo XX,regla
+g011,wiki_3369664,Helen of Troy (miniseries),,,,revision,fuera,,Serie de televisión,regla
+g012,wiki_26391485,Dusios,,,,revision,fuera,sí,Ser divino celta,regla
+g013,wiki_8488050,Outis,,,,revision,dentro,sí,El seudónimo de Odiseo en la Odisea,regla
+g014,wiki_79373,Caduceus,,,,revision,dentro,,,regla
+g015,wiki_73023505,Lycian peasants,,,,revision,dentro,,,regla
+g016,wiki_315612,Thor in comics,,,,revision,fuera,,Cómics,regla
+g017,wiki_29957,Troll,,,,revision,dentro,sí,"Ser del folklore nórdico presente en la mitología nórdica, como el elfo",regla
+g018,wiki_82835,Momus,,,,revision,dentro,,,regla
+g019,wiki_50560,Lemures,,,,revision,dentro,,,regla
+g020,wiki_85026,Angerona,,,,revision,dentro,sí,Diosa del culto romano,regla
+g021,wiki_3633103,Proteus (king of Egypt),,,,revision,dentro,,,regla
+g022,wiki_80084,Dardanus (son of Zeus),,,,revision,dentro,,,regla
+g023,wiki_7704150,Ariane (Massenet),,,,revision,fuera,,Ópera moderna,regla
+g024,wiki_668941,Belus (Egyptian),,,,revision,dentro,,,regla
+g025,wiki_425567,Lares Familiares,,,,revision,dentro,,,regla
+g026,wiki_644857,Einar,,,,revision,fuera,,Nombre de pila,regla
+g027,wiki_3839471,Myrkviðr,,,,revision,dentro,,,regla
+g028,wiki_84955,Abundantia,,,,revision,dentro,,,regla
+g029,wiki_70962329,The Death of Balder,,,,revision,fuera,,Cuadro moderno (1817),regla
+g030,wiki_23849807,River Lethe in popular culture,,,,revision,fuera,,Cultura popular,regla
+g031,wiki_1712572,Flamen Martialis,,,,revision,dentro,,,regla
+g032,wiki_86038,Arduinna,,,,revision,fuera,sí,Diosa gala (religión galorromana),regla
+g033,wiki_85608,Providentia,,,,revision,dentro,,,regla
+g034,wiki_85676,Veritas,,,,revision,dentro,,,regla
+g035,wiki_10100830,Acis and Galatea,,,,revision,dentro,,,regla
+g036,wiki_71133956,Some Fairy Tales of the Ancient Greeks,,,,revision,fuera,,Libro moderno,regla
+g037,wiki_22026903,Between Scylla and Charybdis,,,,revision,fuera,,Expresión que lleva el nombre,regla
+g038,wiki_26739570,Vagitanus,,,,revision,dentro,,,regla
+g039,wiki_77467,Aegea,,,,revision,fuera,,Palabra derivada de un nombre mítico,regla
+g040,wiki_84971,Achates,,,,revision,dentro,,,regla
+g041,wiki_34259152,Amphius,,,,revision,dentro,,,regla
+g042,wiki_78365,Agelasta,,,,revision,dentro,,,regla
+g043,wiki_21434182,Astris,,,,revision,dentro,,,regla
+g044,wiki_53754985,Asterope (mythology),,,,revision,dentro,,,regla
+g045,wiki_27009946,Anticlus,,,,revision,dentro,,,regla
+g046,wiki_59029886,Arabius (mythology),,,,revision,dentro,,,regla
+g047,wiki_38011250,Damastor,,,,revision,dentro,,,regla
+g048,wiki_58284259,Daiphron,,,,revision,dentro,,,regla
+g049,wiki_58621963,Cleopatra (mythology),,,,revision,dentro,,,regla
+g050,wiki_82635321,Chaldene (mythology),,,,revision,dentro,,,regla
+g051,wiki_55034900,Atlas personality,,,,revision,fuera,,Concepto psicológico que lleva el nombre,regla
+g052,wiki_67507418,Eurryroe,,,,revision,dentro,,,regla
+g053,wiki_67589287,Epigeus,,,,revision,dentro,,,regla
+g054,wiki_19750956,Demoleon,,,,revision,dentro,,,regla
+g055,wiki_77817757,Greek mythology retelling,,,,revision,fuera,,Género literario moderno,regla
+g056,wiki_36750591,Galene (mythology),,,,revision,dentro,,,regla
+g057,wiki_15397233,Lycaon (son of Priam),,,,revision,dentro,,,regla
+g058,wiki_82845,Lilaea,,,,revision,dentro,,,regla
+g059,wiki_81731,Lycomedes of Scyros,,,,revision,dentro,,,regla
+g060,wiki_81990,Machaon (mythology),,,,revision,dentro,,,regla
+g061,wiki_24871548,Macistus,,,,revision,dentro,,,regla
+g062,wiki_84666,Phereclus,,,,revision,dentro,,,regla
+g063,wiki_2608272,Eucharis (fiction),,,,revision,fuera,,Personaje de una novela de 1699,regla
+g064,wiki_37276405,Zeuxo (mythology),,,,revision,dentro,,,regla
+g065,wiki_37052671,Theandrios,,,,revision,fuera,sí,Dios de tribus árabes,regla
+g066,wiki_43224024,Polites,,,,revision,dentro,,,regla
+g067,wiki_83014,Pitys (mythology),,,,revision,dentro,,,regla
+g068,wiki_84431,Lityerses,,,,revision,dentro,,,regla
+g069,wiki_37323654,Deiopea (mythology),,,,revision,dentro,,,regla
+g070,wiki_44737583,Hermes (given name),,,,revision,fuera,,Nombre de pila,regla
+g071,wiki_11820432,Hjördís,,,,revision,dentro,,,regla
+g072,wiki_12166834,Bubona,,,,revision,dentro,,,regla
+g073,wiki_86042,Arvernus,,,,revision,fuera,sí,Dios galo (religión galorromana),regla
+g074,wiki_33965276,Barbette Spaeth,,,,revision,fuera,,Académica actual,regla
+g075,wiki_85640,Stata Mater,,,,revision,dentro,,,regla
+g076,wiki_85630,Sergestus,,,,revision,dentro,,,regla
+g077,wiki_85636,Sors,,,,revision,dentro,,,regla
+g078,wiki_85679,Volturnus,,,,revision,dentro,,,regla

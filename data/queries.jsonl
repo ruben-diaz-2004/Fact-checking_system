@@ -1,12 +1,9 @@
 {"qid": "q002", "query": "What is the origin of the name \"Opuntii\" in ancient Greek mythology?", "relevant_ids": ["wiki_24959971"], "source_chunk": "wiki_24959971_c01", "fuente": "wikipedia"}
 {"qid": "q003", "query": "What does Plutarch's account of Pan's death have to do with Jesus Christ and early Christianity?", "relevant_ids": ["wiki_78881"], "source_chunk": "wiki_78881_c11", "fuente": "wikipedia"}
 {"qid": "q004", "query": "Locrian town listed in Homer's catalogue of ships, named for its thick woods and later renamed", "relevant_ids": ["wiki_58509840"], "source_chunk": "wiki_58509840_c01", "fuente": "wikipedia"}
-{"qid": "q005", "query": "Cupid and Psyche mythological artwork by Bouguereau explained", "relevant_ids": ["wiki_606116"], "source_chunk": "wiki_606116_c02", "fuente": "wikipedia"}
-{"qid": "q007", "query": "What happens to Odysseus after Homer's Odyssey ends and he meets a new love interest?", "relevant_ids": ["wiki_3346603"], "source_chunk": "wiki_3346603_c10", "fuente": "wikipedia"}
 {"qid": "q008", "query": "What happened to Hippothoon's mother in Greek mythology involving Poseidon and a kingfisher disguise?", "relevant_ids": ["wiki_78559"], "source_chunk": "wiki_78559_c01", "fuente": "wikipedia"}
 {"qid": "q010", "query": "What myth explains why Eos, a Greek goddess, fell in love with many mortals and gods?", "relevant_ids": ["wiki_10477"], "source_chunk": "wiki_10477_c12", "fuente": "wikipedia"}
 {"qid": "q012", "query": "Penthesilea's death in Greek mythology variations and interpretations of her legend", "relevant_ids": ["wiki_78594"], "source_chunk": "wiki_78594_c03", "fuente": "wikipedia"}
-{"qid": "q013", "query": "praise and later restoration of a Mexican muralist's fresco of the fire-giving Titan in California", "relevant_ids": ["wiki_63992152"], "source_chunk": "wiki_63992152_c03", "fuente": "wikipedia"}
 {"qid": "q014", "query": "carved cross in an English church that may show the trickster god bound", "relevant_ids": ["wiki_18013"], "source_chunk": "wiki_18013_c32", "fuente": "wikipedia"}
 {"qid": "q015", "query": "What are the origins of the names Chryse and Argyre on Mars?", "relevant_ids": ["wiki_52419008"], "source_chunk": "wiki_52419008_c04", "fuente": "wikipedia"}
 {"qid": "q016", "query": "Homeric hymn where the love goddess reveals herself to a Trojan herdsman and foretells their son Aeneas", "relevant_ids": ["hesiodo_21"], "source_chunk": "hesiodo_21_c09", "fuente": "clasicos"}
@@ -41,11 +38,9 @@
 {"qid": "q053", "query": "Apollo's purification after killing Python in Greek mythology", "relevant_ids": ["wiki_83036"], "source_chunk": "wiki_83036_c03", "fuente": "wikipedia"}
 {"qid": "q055", "query": "giants in post-Christian Norse mythology and folklore", "relevant_ids": ["wiki_88664"], "source_chunk": "wiki_88664_c10", "fuente": "wikipedia"}
 {"qid": "q057", "query": "Memnon statues in ancient Greek art and literature", "relevant_ids": ["wiki_3362080"], "source_chunk": "wiki_3362080_c07", "fuente": "wikipedia"}
-{"qid": "q058", "query": "Rhinemaidens' role in Wagner's Das Rheingold", "relevant_ids": ["wiki_19868945"], "source_chunk": "wiki_19868945_c04", "fuente": "wikipedia"}
 {"qid": "q060", "query": "Cretan city whose evergreen plane tree was said to have sheltered the union of Zeus and Europa", "relevant_ids": ["wiki_2841033"], "source_chunk": "wiki_2841033_c02", "fuente": "wikipedia"}
 {"qid": "q061", "query": "Gallo-Roman cup with Cernunnos and Mercury symbols", "relevant_ids": ["wiki_78330960"], "source_chunk": "wiki_78330960_c01", "fuente": "wikipedia"}
 {"qid": "q063", "query": "Hector kills Protesilaus in single combat at Troy", "relevant_ids": ["wiki_13207"], "source_chunk": "wiki_13207_c05", "fuente": "wikipedia"}
-{"qid": "q066", "query": "plot of Shakespeare's Trojan War play in which Achilles only returns to fight after his lover is killed", "relevant_ids": ["wiki_59083633"], "source_chunk": "wiki_59083633_c02", "fuente": "wikipedia"}
 {"qid": "q069", "query": "Pyrrhus punished for assaulting goddess Rhea in ancient Greek mythology", "relevant_ids": ["wiki_72585691"], "source_chunk": "wiki_72585691_c01", "fuente": "wikipedia"}
 {"qid": "q070", "query": "Janus and Juno's relationship in ancient Roman theology", "relevant_ids": ["wiki_159852"], "source_chunk": "wiki_159852_c20", "fuente": "wikipedia"}
 {"qid": "q072", "query": "Catullus poem 68 Troy mythological significance", "relevant_ids": ["wiki_6271028"], "source_chunk": "wiki_6271028_c02", "fuente": "wikipedia"}
@@ -59,7 +54,7 @@
 {"qid": "q083", "query": "wooden horse debate in Greek mythology", "relevant_ids": ["hesiodo_57"], "source_chunk": "hesiodo_57_c01", "fuente": "clasicos"}
 {"qid": "q084", "query": "gods flee to Egypt disguised as animals when the giants attack heaven", "relevant_ids": ["bulfinch_10"], "source_chunk": "bulfinch_10_c02", "fuente": "clasicos"}
 {"qid": "q085", "query": "Ceres sends a nymph to the barren land of Famine to punish a sacrilegious man", "relevant_ids": ["ovidio2_007"], "source_chunk": "ovidio2_007_c04", "fuente": "clasicos"}
-{"qid": "q086", "query": "Automatedon's prayer to Jove in Homer's Iliad", "relevant_ids": ["iliada_17"], "source_chunk": "iliada_17_c23", "fuente": "clasicos"}
+{"qid": "q086", "query": "Automedon's prayer to Jove in Homer's Iliad", "relevant_ids": ["iliada_17"], "source_chunk": "iliada_17_c23", "fuente": "clasicos"}
 {"qid": "q089", "query": "Aeneas vs Idomeneus duel in Greek mythology", "relevant_ids": ["iliada_13"], "source_chunk": "iliada_13_c24", "fuente": "clasicos"}
 {"qid": "q091", "query": "Troy's oath-offerings and single combat for Helen", "relevant_ids": ["iliada_03"], "source_chunk": "iliada_03_c11", "fuente": "clasicos"}
 {"qid": "q092", "query": "Venus wounded by Diomedes in battle", "relevant_ids": ["iliada_05"], "source_chunk": "iliada_05_c17", "fuente": "clasicos"}

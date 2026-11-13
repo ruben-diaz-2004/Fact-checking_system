@@ -6,6 +6,9 @@ Limpieza:
     Bibliography...) y las de cultura popular (In popular culture, adaptaciones...),
     con todas sus subsecciones.
 Filtros (en este orden):
+  0. Artículos fuera de tema según la clasificación revisada (data/wikipedia_excluidos.csv,
+     generado por clasifica_wikipedia.py + rescata_wikipedia.py + revisión manual) y
+     artículos cuyo título es de cultura popular ("X in popular culture", "Thor in comics"...).
   1. Listas ("List of...") y desambiguaciones que no son de mitología.
      (Las de mitología, "In Greek mythology, the name X may refer to...", se quedan.)
   2. Tema: el primer párrafo debe hablar de mitos, dioses, héroes, leyendas, tragedias...
@@ -13,6 +16,7 @@ Filtros (en este orden):
   4. Longitud: al menos MIN_PALABRAS palabras después de limpiar.
 
 Entrada:  data/raw/wikipedia/articulos.jsonl
+          data/wikipedia_excluidos.csv   (si existe)
 Salida:   data/processed/wikipedia.jsonl            (mismo formato que clasicos.jsonl)
           data/raw/wikipedia/descartados_procesado.csv (qué se descartó y por qué)
 
@@ -30,6 +34,7 @@ RAIZ = Path(__file__).resolve().parents[1]
 RUTA_ENTRADA = RAIZ / "data" / "raw" / "wikipedia" / "articulos.jsonl"
 RUTA_SALIDA = RAIZ / "data" / "processed" / "wikipedia.jsonl"
 RUTA_DESCARTADOS = RAIZ / "data" / "raw" / "wikipedia" / "descartados_procesado.csv"
+RUTA_EXCLUIDOS = RAIZ / "data" / "wikipedia_excluidos.csv"
 
 MIN_PALABRAS = 50     # los personajes menores suelen tener 50-100 palabras y son datos útiles
 
@@ -44,7 +49,14 @@ SECCIONES_RELLENO = {
 SECCIONES_CULTURA_POP = ["popular culture", "modern culture", "in fiction", "in film",
                          "in media", "video game", "modern depictions", "modern references",
                          "cultural references", "adaptations", "in music", "in television",
-                         "in comics", "modern adaptations", "modern use", "modern usage"]
+                         "in comics", "modern adaptations", "modern use", "modern usage",
+                         # añadidas tras el diagnóstico de secciones (diagnostico.py)
+                         "film", "comics", "other media", "modern media", "social media",
+                         "animated adaptation", "television"]
+
+# Títulos de cultura popular (encontrados con diagnostico.py)
+TITULO_CULTURA_POP = re.compile(r"in popular culture|in fiction|in comics|cultural depictions|"
+                                r"\bin culture$|\(webcomic\)", re.IGNORECASE)
 
 # Palabras que el primer párrafo debe contener para considerar el artículo de mitología
 TEMA = re.compile(
@@ -95,6 +107,8 @@ def primer_parrafo(texto, palabras=120):
 
 def motivo_descarte(titulo, texto_limpio):
     """Devuelve por qué se descarta un artículo, o None si se queda."""
+    if TITULO_CULTURA_POP.search(titulo):
+        return "cultura popular (título)"
     inicio = texto_limpio[:400].lower()
     entradilla = primer_parrafo(texto_limpio)
     if re.match(r"^(list|lists|index|outline) of\b", titulo.lower()):
@@ -116,10 +130,18 @@ def main():
     df = pd.read_json(RUTA_ENTRADA, lines=True)
     palabras_antes = df["texto"].fillna("").str.split().str.len().sum()
 
+    excluidos = set()
+    if RUTA_EXCLUIDOS.exists():
+        excluidos = set(pd.read_csv(RUTA_EXCLUIDOS)["doc_id"])
+    print(f"Artículos excluidos por la clasificación: {len(excluidos)}")
+
     documentos, descartados = [], []
     for art in df.itertuples():
         limpio = quitar_secciones(art.texto or "")
-        motivo = motivo_descarte(art.titulo, limpio)
+        if f"wiki_{art.pageid}" in excluidos:
+            motivo = "fuera de tema (clasificación)"
+        else:
+            motivo = motivo_descarte(art.titulo, limpio)
         if motivo:
             descartados.append({"titulo": art.titulo, "motivo": motivo,
                                 "palabras": len(limpio.split()),
@@ -156,7 +178,7 @@ def main():
           f"(mediana por artículo: {palabras.median():.0f})")
     print("=" * 60)
 
-    for motivo in ["tema", "otra mitología", "corto", "desambiguación o lista"]:
+    for motivo in ["tema", "otra mitología", "corto", "desambiguación o lista", "cultura popular (título)"]:
         muestra = desc[desc["motivo"] == motivo] if len(desc) else desc
         if len(muestra):
             print(f"\nMuestra de descartados por '{motivo}':")
