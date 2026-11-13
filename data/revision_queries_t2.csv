@@ -1,0 +1,91 @@
+qid,tanda,fuente,titulo,relevant_id,source_chunk,solape,decision,motivo,query_original,query_final
+q046,2,wikipedia,Beowulf (hero),wiki_995728,wiki_995728_c02,0.75,mantener,,etymology of Beowulf and Böðvarr connection,etymology of Beowulf and Böðvarr connection
+q047,2,wikipedia,Orcus,wiki_84896,wiki_84896_c06,0.83,mantener,,Orcus as devouring mouth in ancient Roman mythology,Orcus as devouring mouth in ancient Roman mythology
+q048,2,wikipedia,Anastasia of Sirmium,wiki_2492613,wiki_2492613_c06,0.60,descartar,Documento fuera de tema: santa cristiana,relics of Saint Anastasia in different locations,
+q049,2,wikipedia,Augustus,wiki_1273,wiki_1273_c39,0.67,descartar,Documento fuera de tema: historia de Augusto,Tiberius adoption by Augustus AD 4,
+q050,2,wikipedia,Helios,wiki_67230,wiki_67230_c59,0.71,mantener,,Helios mosaics in ancient synagogues with Sol Invictus attributes,Helios mosaics in ancient synagogues with Sol Invictus attributes
+q051,2,wikipedia,Apollo,wiki_594,wiki_594_c10,0.80,mantener,,Apollo epithets Celtic Roman Empire,Apollo epithets Celtic Roman Empire
+q052,2,wikipedia,Founding of Rome,wiki_40189,wiki_40189_c15,0.57,editar,Demasiado genérica,Greek influence on early Roman mythology and foundation legends,legend that Rome began as an Arcadian colony founded by Evander
+q053,2,wikipedia,Python (mythology),wiki_83036,wiki_83036_c03,0.57,mantener,,Apollo's purification after killing Python in Greek mythology,Apollo's purification after killing Python in Greek mythology
+q054,2,wikipedia,Roman goose,wiki_1945173,wiki_1945173_c01,0.60,descartar,Documento fuera de tema: raza de oca doméstica,geese alerting Romans to Gauls invasion,
+q055,2,wikipedia,Jötunn,wiki_88664,wiki_88664_c10,0.83,mantener,,giants in post-Christian Norse mythology and folklore,giants in post-Christian Norse mythology and folklore
+q056,2,wikipedia,Heroön at Nemea,wiki_55138595,wiki_55138595_c01,0.83,descartar,Trivial: copia el título del documento,Heroön at Nemea archaeological site and its connection to Heracles,
+q057,2,wikipedia,Memnon,wiki_3362080,wiki_3362080_c07,0.40,mantener,,Memnon statues in ancient Greek art and literature,Memnon statues in ancient Greek art and literature
+q058,2,wikipedia,Rhinemaidens,wiki_19868945,wiki_19868945_c04,0.75,mantener,,Rhinemaidens' role in Wagner's Das Rheingold,Rhinemaidens' role in Wagner's Das Rheingold
+q059,2,wikipedia,Al-Lat,wiki_1601078,wiki_1601078_c06,0.80,descartar,Documento fuera de tema: diosa árabe,goddesses worshipped by Nabataeans and their associations,
+q060,2,wikipedia,Gortyna,wiki_2841033,wiki_2841033_c02,0.40,editar,Genérica y no describe el fragmento,Gortyna city in ancient Greek mythology,Cretan city whose evergreen plane tree was said to have sheltered the union of Zeus and Europa
+q061,2,wikipedia,Lyon cup,wiki_78330960,wiki_78330960_c01,0.83,mantener,,Gallo-Roman cup with Cernunnos and Mercury symbols,Gallo-Roman cup with Cernunnos and Mercury symbols
+q062,2,wikipedia,Fáfnir,wiki_87298,wiki_87298_c20,0.40,descartar,Documento fuera de tema: cultura popular moderna (sección no filtrada),Fafnir appearances in video games and media,
+q063,2,wikipedia,Hector,wiki_13207,wiki_13207_c05,0.83,mantener,,Hector kills Protesilaus in single combat at Troy,Hector kills Protesilaus in single combat at Troy
+q064,2,wikipedia,Nisse (folklore),wiki_71485,wiki_71485_c20,0.86,descartar,Documento fuera de tema: folklore escandinavo moderno,household spirits in European folklore compared to Scandinavian nisse,
+q065,2,wikipedia,The Intervention of the Sabine Women,wiki_17986829,wiki_17986829_c04,1.00,descartar,Documento fuera de tema: modelos de un cuadro,David's use of de Bellegarde sisters in art,
+q066,2,wikipedia,Troilus and Cressida,wiki_59083633,wiki_59083633_c02,1.00,editar,"Describe la Ilíada, no la obra de Shakespeare",Achilles' return to battle after Patroclus' death in the Iliad,plot of Shakespeare's Trojan War play in which Achilles only returns to fight after his lover is killed
+q067,2,wikipedia,Vénus et Adonis,wiki_31323642,wiki_31323642_c03,0.75,descartar,Documento fuera de tema: historia de una ópera,opera Vénus et Adonis revival in Lunéville in 1707,
+q068,2,wikipedia,Cauld Lad of Hylton,wiki_2473334,wiki_2473334_c02,0.67,descartar,Documento fuera de tema: fantasma del folklore inglés,Cauld Lad of Hylton ghost story and song lyrics,
+q069,2,wikipedia,Pyrrhus (mythology),wiki_72585691,wiki_72585691_c01,0.88,mantener,,Pyrrhus punished for assaulting goddess Rhea in ancient Greek mythology,Pyrrhus punished for assaulting goddess Rhea in ancient Greek mythology
+q070,2,wikipedia,Janus,wiki_159852,wiki_159852_c20,0.67,mantener,,Janus and Juno's relationship in ancient Roman theology,Janus and Juno's relationship in ancient Roman theology
+q071,2,wikipedia,"Diana Fountain, Bushy Park",wiki_27684871,wiki_27684871_c02,1.00,descartar,Documento fuera de tema: historia de una fuente,Somerset House fountain design by Inigo Jones,
+q072,2,wikipedia,Catullus 68,wiki_6271028,wiki_6271028_c02,0.60,mantener,,Catullus poem 68 Troy mythological significance,Catullus poem 68 Troy mythological significance
+q073,2,wikipedia,Harpans kraft,wiki_39928800,wiki_39928800_c03,1.00,descartar,Documento fuera de tema: variantes de una balada,Harpans kraft variants and translations,
+q074,2,wikipedia,Household deity,wiki_772119,wiki_772119_c07,1.00,descartar,Documento fuera de tema: folklore de espíritus domésticos,house spirit in Indo-European household,
+q075,2,wikipedia,Gorgo (mythology),wiki_67449475,wiki_67449475_c01,0.80,mantener,,Gorgo in Greek mythology multiple identities,Gorgo in Greek mythology multiple identities
+q076,2,clasicos,"Bulfinch, Chapter XVII: Orpheus and Eurydice. Artistaeus. Amphion. Linus.",bulfinch_17,bulfinch_17_c04,0.25,descartar,Ambigua: Orfeo y Eurídice está en muchos documentos,Orpheus loses Eurydice in underworld,
+q077,2,clasicos,"Iliad, Book XV",iliada_15,iliada_15_c20,0.50,editar,Describe mal la escena (no es un duelo),Hector vs Ajax duel in Trojan War,Hector and Ajax fight over the same ship while the Trojans try to set it on fire
+q078,2,clasicos,The Ballad Of The High One (Hovamol),edda_poetica_02,edda_poetica_02_c23,0.00,mantener,,Old Norse magic spells and charms in Poetic Edda,Old Norse magic spells and charms in Poetic Edda
+q079,2,clasicos,"Metamorphoses XII.146-535: A truce ensuing, the Grecian chiefs having assembled at a feast, express their surprise at the fact of Cygnus being invu",ovidio2_032,ovidio2_032_c07,0.25,mantener,,Gryneus vs Lapithae in Greek mythology,Gryneus vs Lapithae in Greek mythology
+q080,2,clasicos,"Metamorphoses II.1-303: Phaëton, insulted by Epaphus, goes to the Palace of Apollo, to beseech him to give some token that he is his son",ovidio1_018,ovidio1_018_c12,0.20,editar,Ambigua y mal formulada,Phaeton's flight from the sun in Greek mythology,"Phaethon panics high in the sky, loses control of the horses and sees the Scorpion"
+q081,2,clasicos,"Bulfinch, Chapter XXII: Adventures of Ulysses. The Lotus-Eaters. Cyclopes. Circe.",bulfinch_22,bulfinch_22_c13,0.80,mantener,,Circe's transformed victims in Keats' Endymion,Circe's transformed victims in Keats' Endymion
+q082,2,clasicos,"Metamorphoses XI.410-748: Ceyx, going to Claros, to consult the oracle about his brother’s fate, is shipwrecked on the voyage",ovidio2_029,ovidio2_029_c11,0.60,mantener,,description of Sleep's cave and Lethe river,description of Sleep's cave and Lethe river
+q083,2,clasicos,The Sack Of Ilium,hesiodo_57,hesiodo_57_c01,0.40,mantener,,wooden horse debate in Greek mythology,wooden horse debate in Greek mythology
+q084,2,clasicos,"Bulfinch, Chapter X: Monsters. Giants. Sphinx. Pegasus and the Chimaera.",bulfinch_10,bulfinch_10_c02,0.50,editar,Mal formulada,mythological origin of the Sphinx Laius,gods flee to Egypt disguised as animals when the giants attack heaven
+q085,2,clasicos,"Metamorphoses VIII.738-884: Acheloüs continues his narrative with the story of Metra, the daughter of Erisicthon, who is attacked with insatiable hu",ovidio2_007,ovidio2_007_c04,0.50,editar,Describe mal (no hay batalla),Ceres vs Famine mythological battle,Ceres sends a nymph to the barren land of Famine to punish a sacrilegious man
+q086,2,clasicos,"Iliad, Book XVII",iliada_17,iliada_17_c23,0.20,mantener,,Automatedon's prayer to Jove in Homer's Iliad,Automatedon's prayer to Jove in Homer's Iliad
+q087,2,clasicos,"Bulfinch, Chapter II: Prometheus and Pandora",bulfinch_02,bulfinch_02_c19,0.60,descartar,Ambigua: Apolo y Dafne está en muchos documentos,Laurel tree transformation myth Apollo,
+q088,2,clasicos,"Apollodorus, Epitome 7",apolodoro_40,apolodoro_40_c09,0.57,descartar,Ambigua: el sudario de Penélope está en muchos documentos,Penelope's trick with the shroud of Laertes in Homer's Odyssey,
+q089,2,clasicos,"Iliad, Book XIII",iliada_13,iliada_13_c24,0.40,mantener,,Aeneas vs Idomeneus duel in Greek mythology,Aeneas vs Idomeneus duel in Greek mythology
+q090,2,clasicos,Metamorphoses IV.271-284: Daphnis is turned into a stone,ovidio1_042,ovidio1_042_c01,0.00,descartar,Ambigua: amores transformados (muy vaga) está en muchos documentos,mythological stories about shape-shifting lovers,
+q091,2,clasicos,"Iliad, Book III",iliada_03,iliada_03_c11,1.00,mantener,,Troy's oath-offerings and single combat for Helen,Troy's oath-offerings and single combat for Helen
+q092,2,clasicos,"Iliad, Book V",iliada_05,iliada_05_c17,0.75,mantener,,Venus wounded by Diomedes in battle,Venus wounded by Diomedes in battle
+q093,2,clasicos,"Iliad, Book XX",iliada_20,iliada_20_c01,0.80,mantener,,gods gather in council to watch Trojan War,gods gather in council to watch Trojan War
+q094,2,clasicos,"Bulfinch, Chapter VII: Cadmus. The Myrmidons.",bulfinch_07,bulfinch_07_c08,0.33,mantener,,mythological plague with snakes and animal deaths,mythological plague with snakes and animal deaths
+q095,2,clasicos,Hesiod’s Works And Days,hesiodo_01,hesiodo_01_c10,0.20,mantener,,Zeus destroying a future generation of humans,Zeus destroying a future generation of humans
+q096,2,clasicos,"Odyssey, Book I",odisea_01,odisea_01_c02,0.67,mantener,,Aegisthus' punishment by the gods after killing Agamemnon,Aegisthus' punishment by the gods after killing Agamemnon
+q097,2,clasicos,"Odyssey, Book XXIII",odisea_23,odisea_23_c11,0.43,descartar,Ambigua: reencuentro de Ulises y Penélope está en muchos documentos,Ulysses reunion with Penelope after long absence,
+q098,2,clasicos,"Metamorphoses VII.794-865: Procris, jealous of Cephalus, in her turn, goes to the forest, which she supposes to be the scene of his infidelity, to ",ovidio1_070,ovidio1_070_c02,0.50,editar,Describe mal la escena,Procris mistaken for object of love,"hunter's songs to the cool breeze are mistaken for words to a nymph, making his wife jealous"
+q099,2,clasicos,Skaldskaparmal: Thor’s Journey To Geirrod’s.,edda_prosa_23,edda_prosa_23_c04,0.50,mantener,,Thor's encounter with Geirrod in Norse mythology,Thor's encounter with Geirrod in Norse mythology
+q100,2,youtube,Norse Spirituality - The Parts of the Self,yt_qOP8MSLQjRc,yt_qOP8MSLQjRc_c13,0.50,mantener,,Fylgja manifestation in Norse mythology,Fylgja manifestation in Norse mythology
+q101,2,youtube,Theseus and the Minotaur | The Complete Greek Myth,yt_mwKAGwZg86o,yt_mwKAGwZg86o_c03,0.17,mantener,,Labyrinth myth with 14 annual Athenian tributes,Labyrinth myth with 14 annual Athenian tributes
+q102,2,youtube,The Aesir-Vanir War - Norse - Extra Mythology,yt_g9TET6YTYrk,yt_g9TET6YTYrk_c01,0.80,descartar,Ambigua: guerra de Æsir y Vanir está en muchos documentos,Norse mythology Aesir Vanir war origin,
+q103,2,youtube,The Wisdom of Odin,yt_G_X8goiHe5c,yt_G_X8goiHe5c_c12,0.50,mantener,,Odin's evolution from life mystery god to all-knowing sky god,Odin's evolution from life mystery god to all-knowing sky god
+q104,2,youtube,Norse Symbols (and Their Unknowable Meanings),yt_lHbD8ko-tU0,yt_lHbD8ko-tU0_c08,0.50,mantener,,Viking age visual symbolism and its limitations in historical understanding,Viking age visual symbolism and its limitations in historical understanding
+q105,2,youtube,Norse myth was not made up by Christians,yt_ZEAqNZWX010,yt_ZEAqNZWX010_c08,0.50,editar,Ambigua,Poetic Edda manuscript history,why people confuse the two Eddas and when the Norse poems were first written down
+q106,2,youtube,Valkyries (Valkyrjur),yt_VMrYEq_jNVs,yt_VMrYEq_jNVs_c31,0.29,mantener,,Valkyrie rivalry over promised husbands in Norse mythology,Valkyrie rivalry over promised husbands in Norse mythology
+q107,2,youtube,How Thor got his hammer - Scott A. Mellor,yt_Qytj-DbXMKQ,yt_Qytj-DbXMKQ_c01,0.57,descartar,Ambigua: el pelo de Sif está en muchos documentos,Loki tricks Thor's wife Sif into losing her hair,
+q108,2,youtube,The Roman Epic Poem The Aeneid: Introduction and Summary,yt_d2dcqDjxl_c,yt_d2dcqDjxl_c_c12,0.86,mantener,,Aeneid Book X Turnus rampage across River Tiber,Aeneid Book X Turnus rampage across River Tiber
+q109,2,youtube,Norse Religion: Cult of the Dead,yt_JowCuymRr9w,yt_JowCuymRr9w_c22,1.00,mantener,,Norse shamanic practice at crossroads and burial mounds,Norse shamanic practice at crossroads and burial mounds
+q110,2,youtube,Aphrodite the Light Bringer | Tiny Epics,yt__EFJKPP7QNU,yt__EFJKPP7QNU_c04,0.60,mantener,,Origin of Lucifer title in ancient mythology,Origin of Lucifer title in ancient mythology
+q111,2,youtube,Hecate: Goddess of Witchcraft & Necromancy - (Greek Mythology Explained),yt_ylF7rqVsLEg,yt_ylF7rqVsLEg_c07,0.86,descartar,Ambigua: Hécate (muy vaga) está en muchos documentos,Greek goddess with underworld authority and prophetic powers,
+q112,2,youtube,Wyrd and Orlog - The Norse Destiny,yt_NFJ2UVmpRmM,yt_NFJ2UVmpRmM_c17,0.80,mantener,,Norse concept of cyclical time vs linear time,Norse concept of cyclical time vs linear time
+q113,2,youtube,The Cult of Hecate,yt_nZwO0N-hRxU,yt_nZwO0N-hRxU_c05,0.83,mantener,,Hecate symbolism serpent rebirth knowledge labyrinth,Hecate symbolism serpent rebirth knowledge labyrinth
+q114,2,youtube,Solving the Ancient Mystery of Knossos and the Minotaur,yt_XaN88NLCoVE,yt_XaN88NLCoVE_c16,0.40,mantener,,bull jumping in ancient Cretan culture,bull jumping in ancient Cretan culture
+q115,2,youtube,Lokasenna: The Norse Poem of Loki's Locker Talk,yt_TP4NuHaE_Xs,yt_TP4NuHaE_Xs_c02,0.83,mantener,,Loki's truth-telling insults in Old Norse poetry,Loki's truth-telling insults in Old Norse poetry
+q116,2,youtube,Medusa The Real History | Greek Mythology,yt_egNJXvg811g,yt_egNJXvg811g_c34,0.80,mantener,,Medusa's beauty and ugliness in Greek mythology,Medusa's beauty and ugliness in Greek mythology
+q117,2,youtube,The Sun in Norse Myth,yt_r-N-uND6x1U,yt_r-N-uND6x1U_c04,0.50,mantener,,Norse mythology vs nature worship,Norse mythology vs nature worship
+q118,2,youtube,Miscellaneous Myths: The Theogony (Greek Creation Myth),yt_Q9RGT0ICHpY,yt_Q9RGT0ICHpY_c03,0.60,descartar,Ambigua: castración de Urano está en muchos documentos,Cronus castrates Uranus with a sickle,
+q119,2,youtube,"Thor's ""True Name""",yt_BXoarBVgUXc,yt_BXoarBVgUXc_c21,0.83,mantener,,Thor's name origins in Indo-European languages,Thor's name origins in Indo-European languages
+q120,2,whe,Vejovis,whe_094,whe_094_c02,0.60,mantener,,Vejovis Roman god destructive powers invocation,Vejovis Roman god destructive powers invocation
+q121,2,whe,Charon: The Ferryman to the Dead in Greek Mythology,whe_131,whe_131_c03,0.83,mantener,,Charon ferryman mythological differences Etruscan version,Charon ferryman mythological differences Etruscan version
+q122,2,whe,A Visual Who's Who of Greek Mythology,whe_058,whe_058_c10,0.60,descartar,Ambigua: Hades y la granada está en muchos documentos,Greek god associated with pomegranate trickery,
+q123,2,whe,Poseidon,whe_108,whe_108_c04,1.00,editar,Ambigua: la disputa con Atenea no es el tema del fragmento,Poseidon's gifts in competition with Athena,sea god honoured with games at the Isthmus of Corinth and boat races at Sounion
+q124,2,whe,Deianira,whe_035,whe_035_c03,0.60,descartar,Ambigua: Hércules y Neso está en muchos documentos,Hercules' encounter with Nessus and its consequences,
+q125,2,whe,The Shield of Heracles: The Complete Poem,whe_038,whe_038_c19,0.50,mantener,,Heracles' battle strategy against Ares and Cycnus,Heracles' battle strategy against Ares and Cycnus
+q126,2,whe,Dido: Legendary Queen of Tyre,whe_056,whe_056_c02,0.71,mantener,,Dido founding Carthage with a trick involving an ox hide,Dido founding Carthage with a trick involving an ox hide
+q127,2,whe,Roman Mythology,whe_083,whe_083_c06,0.80,descartar,Ambigua: adopción romana de dioses griegos está en muchos documentos,Roman adoption of Greek gods and goddesses,
+q128,2,whe,Odyssey: Homer's Epic Poem of Redemption,whe_064,whe_064_c13,1.00,descartar,Ambigua: matanza de los pretendientes está en muchos documentos,Odysseus kills suitors in palace hall with spears and sword,
+q129,2,whe,Zeus,whe_021,whe_021_c01,0.80,descartar,Error de contenido: a Zeus no se lo tragó Cronos (y ambigua),Zeus swallowed by Cronus as baby myth,
+q130,2,whe,Thetis,whe_176,whe_176_c03,0.67,mantener,,Zeus' punishment for Thetis after a prophecy about her son,Zeus' punishment for Thetis after a prophecy about her son
+q131,2,whe,Greek Mythology,whe_010,whe_010_c02,1.00,mantener,,Greek myth representation on pottery and public buildings,Greek myth representation on pottery and public buildings
+q132,2,whe,Arachne,whe_160,whe_160_c01,0.86,descartar,Ambigua: Aracne y Minerva está en muchos documentos,Greek mythology weaving competition between Arachne and Minerva,
+q133,2,whe,Agamemnon (Play),whe_089,whe_089_c05,0.83,editar,Ambigua: no dice que es la obra de teatro,Agamemnon's return from Troy with Cassandra,tragedy in which the victorious king arrives home from Troy with Priam's prophetess daughter
+q134,2,whe,Romulus and Remus,whe_081,whe_081_c08,0.57,descartar,Ambigua: la loba y los gemelos está en muchos documentos,foundational myths of Rome with wolf suckling twins,
+q135,2,whe,Meleager,whe_049,whe_049_c02,0.57,descartar,Ambigua: el jabalí de Calidón está en muchos documentos,Artemis sends boar to terrorize kingdom in Greek myth,
