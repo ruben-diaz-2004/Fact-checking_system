@@ -6,6 +6,7 @@ spacy
 contractions
 gensim
 bm25s
+nltk
 matplotlib
 seaborn
 beautifulsoup4
