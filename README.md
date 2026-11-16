@@ -37,12 +37,12 @@ Dos rasgos propios del tema:
 | Fecha | Entrega | Estado |
 |---|---|---|
 | Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Pendiente de confirmar |
-| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Hecho en la rama `santi`; falta `MILESTONE_1.md` y pasarlo a `main` |
+| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook terminado en la rama `desarrollo`; falta `MILESTONE_1.md`, fijar versiones y pasarlo a `main` |
 | Vie 4 dic, 23:59 | **Hito 2**: sistema RAG con LLM de pesos abiertos y base de datos vectorial | — |
 | Vie 18 dic, 23:59 | **Hito 3**: extensión (modelado de tópicos o LoRA/QLoRA) | — |
 | Enero | Entrega final (informe y código) y presentación | — |
 
-Los hitos se corrigen sobre la rama **`main`** en el commit indicado en Aula Global. El trabajo se desarrolla en ramas propias y se lleva a `main` con un *pull request*.
+Los hitos se corrigen sobre la rama **`main`** en el commit indicado en Aula Global. El trabajo se hace en la rama **`desarrollo`** y se lleva a `main` con un *pull request* en cada entrega.
 
 ---
 
@@ -55,29 +55,36 @@ Fact-checking_system/
 ├── .gitignore
 ├── .env                      # NO se sube: clave de la API del LLM de la UC3M
 ├── src/                      # todos los scripts del pipeline
-│   ├── lista_wikipedia.py
-│   ├── descarga_wikipedia.py
-│   ├── procesa_wikipedia.py
-│   ├── descarga_clasicos.py
-│   ├── procesa_clasicos.py
-│   ├── descarga_whe.py
-│   ├── lista_youtube.py
-│   ├── descarga_youtube.py
-│   ├── troceo.py
-│   ├── construye_corpus.py
-│   ├── preprocesado.py
-│   ├── genera_queries.py
-│   ├── exporta_revision.py
-│   └── crea_queries.py
+│   ├── lista_wikipedia.py            # Wikipedia: lista de artículos por categorías
+│   ├── descarga_wikipedia.py         #   descarga de los textos
+│   ├── procesa_wikipedia.py          #   limpieza y filtros
+│   ├── exporta_validacion_wikipedia.py  # limpieza de Wikipedia: conjunto de validación
+│   ├── clasifica_wikipedia.py        #   clasificador con el LLM
+│   ├── revisa_clasificacion.py       #   revisión de lo que quita el clasificador
+│   ├── rescata_wikipedia.py          #   rescate con la regla y decisión final
+│   ├── descarga_clasicos.py          # clásicos: descarga
+│   ├── procesa_clasicos.py           #   división en documentos y limpieza
+│   ├── descarga_whe.py               # World History Encyclopedia
+│   ├── lista_youtube.py              # YouTube: vídeos candidatos
+│   ├── descarga_youtube.py           #   subtítulos
+│   ├── troceo.py                     # troceo en fragmentos
+│   ├── construye_corpus.py           # junta las fuentes y trocea
+│   ├── preprocesado.py               # preprocesado con spaCy
+│   ├── diagnostico.py                # mediciones del corpus y del preprocesado (no cambia nada)
+│   ├── genera_queries.py             # queries candidatas con el LLM
+│   ├── exporta_revision.py           #   fichero para revisarlas
+│   └── crea_queries.py               #   conjunto final de queries
 ├── data/
 │   ├── youtube_seleccion.csv     # los 250 vídeos elegidos tras la revisión manual
-│   ├── queries.jsonl             # las 95 queries de evaluación
+│   ├── etiquetas_wikipedia.csv   # 255 artículos de Wikipedia etiquetados a mano (dentro/fuera)
+│   ├── wikipedia_excluidos.csv   # los 692 artículos que quedan fuera, con el motivo
+│   ├── queries.jsonl             # las 90 queries de evaluación
 │   ├── revision_queries_t1.csv   # revisión manual de la tanda 1 de queries
 │   ├── revision_queries_t2.csv   # revisión manual de la tanda 2 de queries
 │   ├── raw/                      # NO se sube: descargas tal cual
 │   └── processed/                # NO se sube: corpus, fragmentos y tokens
 ├── notebooks/
-│   └── hito1.ipynb               # baselines TF-IDF y BM25, ejecutado
+│   └── hito1.ipynb               # Hito 1: corpus, queries y baselines TF-IDF y BM25, ejecutado
 └── referencia/                   # notebooks de la asignatura
     ├── Text_Vectorization_I.ipynb      # completado; base del Hito 1
     ├── Text_Vectorization_II.ipynb
@@ -85,7 +92,7 @@ Fact-checking_system/
     └── imdb_lemmas_clean.txt
 ```
 
-**El texto descargado no está en el repositorio** (`data/raw/` y `data/processed/` están en el `.gitignore`), por derechos de autor y por tamaño. Se regenera con los scripts (sección 5). Sí se suben los ficheros pequeños que son fruto de decisiones manuales y que hacen el trabajo reproducible: la selección de vídeos, las queries y las tablas de revisión.
+**El texto descargado no está en el repositorio** (`data/raw/` y `data/processed/` están en el `.gitignore`), por derechos de autor y por tamaño. Se regenera con los scripts (sección 5). Sí se suben los ficheros pequeños que son fruto de decisiones manuales y que hacen el trabajo reproducible: la selección de vídeos, las etiquetas y la lista de excluidos de Wikipedia, las queries y las tablas de revisión.
 
 ---
 
@@ -104,9 +111,9 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-Librerías principales: `requests`, `beautifulsoup4`, `lxml` y `yt-dlp` (descargas); `spacy` y `contractions` (preprocesado); `gensim` y `bm25s` (recuperación); `numpy`, `pandas`, `matplotlib`, `seaborn` y `tqdm`; `ipykernel` (para usar el entorno en Jupyter/VS Code).
+Librerías principales: `requests`, `beautifulsoup4`, `lxml` y `yt-dlp` (descargas); `spacy`, `contractions` y `nltk` (preprocesado; `nltk` solo para el *stemming* que se prueba en el notebook); `gensim` y `bm25s` (recuperación); `numpy`, `pandas`, `matplotlib`, `seaborn` y `tqdm`; `ipykernel` (para usar el entorno en Jupyter/VS Code).
 
-**Clave del LLM de la UC3M.** Solo hace falta para generar queries. Crea un fichero `.env` en la raíz con:
+**Clave del LLM de la UC3M.** Solo hace falta para generar queries y para clasificar los artículos de Wikipedia. Crea un fichero `.env` en la raíz con:
 
 ```
 UC3M_API_KEY=sk-...
@@ -124,23 +131,41 @@ Corpus en **inglés**, de cuatro fuentes. Cada documento es una unidad con senti
 
 | Fuente | Tipo de fuente | Documentos | Palabras | Fragmentos | % fragmentos |
 |---|---|---|---|---|---|
-| Wikipedia | enciclopédica | 4.923 | 3,49 M | 16.470 | 68,6 % |
-| Textos clásicos | primaria (Bulfinch: divulgativa) | 365 | 733 k | 3.383 | 14,1 % |
-| YouTube (transcripciones) | divulgativa (experta o popular) | 233 | 535 k | 2.740 | 11,4 % |
-| World History Encyclopedia | divulgativa | 206 | 319 k | 1.428 | 5,9 % |
-| **Total** | | **5.727** | **≈ 5,1 M** | **24.021** | |
+| Wikipedia | enciclopédica | 4.231 | 2,67 M | 12.723 | 62,8 % |
+| Textos clásicos | primaria (Bulfinch: divulgativa) | 365 | 733 k | 3.383 | 16,7 % |
+| YouTube (transcripciones) | divulgativa (experta o popular) | 233 | 535 k | 2.740 | 13,5 % |
+| World History Encyclopedia | divulgativa | 206 | 319 k | 1.428 | 7,0 % |
+| **Total** | | **5.035** | **≈ 4,26 M** | **20.274** | |
 
-Fragmentos por tipo de fuente: 16.470 enciclopédicos, 4.700 divulgativos y 2.851 primarios. Por mitología (un fragmento puede tener varias): griega 17.264, romana 8.035 y nórdica 4.622.
+Fragmentos por tipo de fuente: 12.723 enciclopédicos, 4.700 divulgativos y 2.851 primarios. Las mitologías no están repartidas por igual: la griega domina en las fuentes escritas, la nórdica tiene poca presencia en los clásicos (solo las dos *Eddas*) y en Wikipedia, y en YouTube es la mayoritaria. El detalle, con gráficas, está en la sección 1 del notebook.
 
 ### 4.1. Wikipedia
 
 - **Selección**: recorrido en anchura del árbol de categorías desde `Category:Greek mythology`, `Category:Roman mythology` y `Category:Norse mythology`, hasta **profundidad 3**, con la API de MediaWiki (`list=categorymembers`).
-- Se excluyen las subcategorías de cultura popular, arte, geografía, arqueología, "por región", etc., y los artículos cuyo título indica una obra moderna (cómic, película, cuadro…). Resultado: **6.701 artículos**, todos descargados (5,84 M de palabras).
+- Se excluyen las subcategorías de cultura popular, arte, geografía, arqueología, "por región", etc., y los artículos cuyo título indica una obra moderna (cómic, película, cuadro…). De 6.839 artículos encontrados quedan **6.701**, todos descargados.
 - **Descarga**: texto plano completo (`prop=extracts`, `explaintext`) con las secciones marcadas como `== Sección ==`, más la URL y el número de revisión (`revid`), para saber exactamente qué versión se usó.
-- **Limpieza y filtrado** (`procesa_wikipedia.py`):
-  - se quitan las secciones de relleno (*References*, *Notes*, *See also*, *External links*, *Bibliography*…) y las de cultura popular, con sus subsecciones;
-  - se descartan las listas y las desambiguaciones que no son de mitología, los artículos cuyo primer párrafo no habla de mitos, dioses, héroes, leyendas o tragedias, los de otras mitologías que no mencionan las nuestras y los de menos de 50 palabras.
-  - Resultado: **4.923 artículos**. Lo descartado y el motivo quedan en `data/raw/wikipedia/descartados_procesado.csv`.
+- **Limpieza de los artículos fuera de tema.** Por las categorías entra mucho ruido: películas, óperas, cuadros, asteroides, barcos y personas históricas que solo llevan un nombre mitológico. El criterio que se fijó es estricto: **dentro quedan los mitos** (personajes, historias, lugares y culto) **y los textos antiguos**; fuera, las obras modernas, lo que solo lleva un nombre mitológico, las personas históricas, el folklore posterior y otras mitologías. Se aplica en tres pasos:
+  1. **Clasificador con un LLM** (`clasifica_wikipedia.py`, `llama3.1:8b` de la UC3M), que lee el título y la introducción de cada artículo.
+  2. **Rescate con una regla** (`rescata_wikipedia.py`): vuelven a entrar los artículos que el LLM quitó si su primera frase dice *Greek / Roman / Norse… mythology / religion / legend*. Se probó también un rescate con una segunda pregunta al LLM, pero devolvía más de la mitad del ruido y **se descartó** (resultado negativo, documentado en el script y en el notebook).
+  3. **Revisión manual**: 255 artículos etiquetados a mano (`data/etiquetas_wikipedia.csv`), que mandan sobre lo anterior. Se etiquetaron en cuatro conjuntos: *validación* (100 al azar, para medir), *largos* y *azar* (artículos que quitaba el clasificador) y *regla* (los que rescata la regla).
+
+  Sobre los 100 artículos de validación, la decisión final acierta en el **96 %**: quita 22 de los 24 artículos de ruido y solo pierde 2 de los 76 buenos. Quedan fuera **692 artículos** (579 por el clasificador y 113 por la revisión manual), listados con su motivo en `data/wikipedia_excluidos.csv`.
+- **Filtros finales** (`procesa_wikipedia.py`, que lee `wikipedia_excluidos.csv`):
+  - se quitan las secciones de relleno (*References*, *Notes*, *See also*, *External links*, *Bibliography*…) y las de cultura popular (*In popular culture*, *Film*, *Comics*, *Television*…), con sus subsecciones;
+  - se descartan los artículos excluidos, los de título de cultura popular, las listas y las desambiguaciones que no son de mitología, los artículos cuyo primer párrafo no habla de mitos, dioses, héroes, leyendas o tragedias, los de otras mitologías que no mencionan las nuestras y los de menos de 50 palabras.
+
+  | Paso | Se quitan | Quedan |
+  |---|---|---|
+  | Encontrados en las categorías | | 6.839 |
+  | Título de obra moderna (al listar) | 138 | 6.701 |
+  | Fuera de tema (LLM + regla + revisión) | 692 | 6.009 |
+  | Título de cultura popular | 1 | 6.008 |
+  | Listas y desambiguaciones | 49 | 5.959 |
+  | El primer párrafo no habla de mitos | 1.345 | 4.614 |
+  | Otra mitología | 44 | 4.570 |
+  | Menos de 50 palabras | 339 | **4.231** |
+
+  Lo descartado por `procesa_wikipedia.py` y el motivo quedan en `data/raw/wikipedia/descartados_procesado.csv`.
 
 ### 4.2. Textos clásicos (fuentes primarias)
 
@@ -175,19 +200,20 @@ Fragmentos por tipo de fuente: 16.470 enciclopédicos, 4.700 divulgativos y 2.85
 - `lista_youtube.py` lista todos los vídeos de cada canal con `yt-dlp`, sin descargarlos, y filtra por título (vocabulario de cada mitología; las palabras ambiguas como *Mars* o *Rome* exigen además una palabra general de mito), por duración (3–60 min) y por un máximo de 30 por canal.
 - **Revisión manual** de los candidatos: se quitaron 56 vídeos y se añadieron 30. El resultado son **250 vídeos** (151 expertos y 99 populares), en `data/youtube_seleccion.csv`, que sí se sube.
 - `descarga_youtube.py` descarga **solo los subtítulos** en inglés: los manuales si existen y, si no, los automáticos. Se pudieron descargar **233** (137 manuales y 96 automáticos); 140 de nivel experto (369 k palabras) y 93 popular (166 k palabras).
+- Dos canales de mitología nórdica, Jackson Crawford y Arith Härger, aportan casi la mitad de los fragmentos de YouTube: el tope de 30 vídeos por canal limita el número de vídeos, no su duración.
 - El texto se divide en bloques de 30 segundos marcados como `== t=125 ==`, para poder citar el minuto exacto.
 - **Hay que ejecutarlo en un ordenador personal**: YouTube bloquea las IP de servidores en la nube.
 
 ### 4.5. Troceo en fragmentos (`troceo.py`)
 
-El **fragmento** es la unidad que se indexa y se recupera:
+El **fragmento** es la unidad que se indexa y se recupera. Se trocea porque los documentos son muy desiguales (de unas decenas de palabras a decenas de miles), porque la prueba que se cite tiene que ser corta y porque los modelos de *embeddings* del Hito 2 tienen un límite de longitud.
 
 - Unas **280 palabras** por fragmento, con un **15 % de solape** entre fragmentos consecutivos.
-- Se respetan las frases (nunca se corta una a la mitad) y las secciones: se intenta empezar fragmento nuevo al cambiar de sección.
+- Se respetan las frases (nunca se corta una a la mitad) y las secciones: se intenta empezar fragmento nuevo al cambiar de sección, y al cambiar de sección no hay solape.
 - Ningún fragmento pasa de 1,4 veces el objetivo; si el último queda muy corto, se une al anterior.
 - En YouTube, cada fragmento guarda el segundo en que empieza (`segundo`).
 
-Resultado: 24.021 fragmentos de 230 palabras de media (mediana 251, máximo 392).
+Resultado: 20.274 fragmentos, de unas 229 palabras de media. Clásicos y WHE se acercan al objetivo y casi siempre solapan; en Wikipedia hay muchos fragmentos cortos (artículos y secciones cortas). **En YouTube los fragmentos salen más cortos de lo previsto** (la mayoría de 140 a 220 palabras) y casi nunca solapan, porque los bloques de 30 segundos cuentan como secciones (sección 10).
 
 ---
 
@@ -199,7 +225,8 @@ Todos los comandos se ejecutan **desde la carpeta raíz del repositorio y con el
 # 1. Wikipedia
 python src/lista_wikipedia.py --contacto tu_correo@ejemplo.com     # lista de artículos (--profundidad 3 por defecto)
 python src/descarga_wikipedia.py --contacto tu_correo@ejemplo.com  # texto de los 6.701 artículos
-python src/procesa_wikipedia.py                                    # limpieza y filtros -> 4.923
+python src/procesa_wikipedia.py                                    # limpieza y filtros -> 4.231
+# (usa data/wikipedia_excluidos.csv, que ya está en el repositorio)
 
 # 2. Textos clásicos
 python src/descarga_clasicos.py
@@ -221,10 +248,23 @@ python src/preprocesado.py --procesos 2
 # prueba rápida con 500 fragmentos al azar: python src/preprocesado.py --muestra 500
 
 # 7. Hito 1
-# abrir notebooks/hito1.ipynb y ejecutarlo entero (Restart + Run All, ~4 min)
+# abrir notebooks/hito1.ipynb y ejecutarlo entero (Restart + Run All, unos minutos)
 ```
 
 `--contacto` es obligatorio para Wikipedia: va en el *User-Agent* de las peticiones, como pide su política de uso.
+
+**Limpieza de Wikipedia** (ya hecha: su resultado es `data/wikipedia_excluidos.csv`; solo hace falta para rehacerla, y requiere el `.env`). Se parte de un `wikipedia.jsonl` procesado **sin** la lista de excluidos:
+
+```bash
+python src/exporta_validacion_wikipedia.py       # 100 artículos para etiquetar a mano -> data/etiquetas_wikipedia.csv
+python src/clasifica_wikipedia.py --validacion   # mide el clasificador con esos 100
+python src/clasifica_wikipedia.py --hilos 4      # clasifica todos los artículos (unas 4.900 llamadas)
+python src/revisa_clasificacion.py               # qué quita, para revisarlo a mano
+python src/rescata_wikipedia.py                  # regla + etiquetas manuales -> data/wikipedia_excluidos.csv
+python src/procesa_wikipedia.py                  # vuelve a filtrar, ya con los excluidos
+```
+
+`rescata_wikipedia.py` escribe además `data/processed/clasificacion_final_wikipedia.csv`, que el notebook usa para medir el clasificador (sección 1.5).
 
 **Queries de evaluación** (ya están en el repositorio; solo hace falta para rehacerlas):
 
@@ -241,7 +281,11 @@ python src/crea_queries.py                       # junta las tablas de revisión
 |---|---|---|
 | `lista_wikipedia.py` | API de Wikipedia | `data/raw/wikipedia/lista_articulos.csv`, `descartados.csv` |
 | `descarga_wikipedia.py` | `lista_articulos.csv` | `data/raw/wikipedia/articulos.jsonl` |
-| `procesa_wikipedia.py` | `articulos.jsonl` | `data/processed/wikipedia.jsonl`, `data/raw/wikipedia/descartados_procesado.csv` |
+| `procesa_wikipedia.py` | `articulos.jsonl`, `data/wikipedia_excluidos.csv` | `data/processed/wikipedia.jsonl`, `data/raw/wikipedia/descartados_procesado.csv` |
+| `exporta_validacion_wikipedia.py` | `corpus.jsonl`, `lista_articulos.csv` | `data/processed/validacion_wikipedia.md` |
+| `clasifica_wikipedia.py` | `wikipedia.jsonl` + LLM | `data/processed/clasificacion_wikipedia.csv` |
+| `revisa_clasificacion.py` | clasificación + corpus + queries | `data/processed/revision_clasificacion.md` |
+| `rescata_wikipedia.py` | clasificación, `articulos.jsonl`, `etiquetas_wikipedia.csv` | `data/wikipedia_excluidos.csv`, `data/processed/clasificacion_final_wikipedia.csv`, `revision_regla.md` |
 | `descarga_clasicos.py` | Gutenberg y Perseus | `data/raw/clasicos/` |
 | `procesa_clasicos.py` | `data/raw/clasicos/` | `data/processed/clasicos.jsonl` |
 | `descarga_whe.py` | sitemap de WHE | `data/raw/whe/`, `data/processed/whe.jsonl` |
@@ -249,9 +293,12 @@ python src/crea_queries.py                       # junta las tablas de revisión
 | `descarga_youtube.py` | `data/youtube_seleccion.csv` | `data/raw/youtube/subs/`, `data/processed/youtube.jsonl` |
 | `construye_corpus.py` | los 4 `.jsonl` de las fuentes | `data/processed/corpus.jsonl`, `chunks.jsonl` |
 | `preprocesado.py` | `chunks.jsonl` | `data/processed/chunks_tokens.jsonl` |
+| `diagnostico.py` | corpus, fragmentos y tokens | resumen por pantalla (no cambia nada) |
 | `genera_queries.py` | `chunks.jsonl` + LLM | `data/processed/queries_candidatas_t{N}.jsonl` |
 | `exporta_revision.py` | candidatas + `chunks.jsonl` | `data/processed/revision_queries_t{N}.md` |
 | `crea_queries.py` | `data/revision_queries_t*.csv` | `data/queries.jsonl` |
+
+**Qué necesita el notebook**: `data/processed/` (`corpus.jsonl`, `chunks.jsonl`, `chunks_tokens.jsonl`, `clasificacion_final_wikipedia.csv`), los tres CSV de `data/raw/wikipedia/` y los ficheros de `data/` que están en el repositorio.
 
 ---
 
@@ -282,6 +329,10 @@ python src/crea_queries.py                       # junta las tablas de revisión
  "relevant_ids": ["wiki_24959971"], "source_chunk": "wiki_24959971_c01", "fuente": "wikipedia"}
 ```
 
+**Etiquetas de Wikipedia** (`data/etiquetas_wikipedia.csv`): una fila por artículo etiquetado a mano, con `doc_id`, `titulo`, profundidad y rama de la categoría, `etiqueta` (`dentro` o `fuera`), si es dudoso, `motivo` y `conjunto` (`validacion`, `largos`, `azar` o `regla`).
+
+**Excluidos de Wikipedia** (`data/wikipedia_excluidos.csv`): `doc_id`, `titulo`, `decidido_por` (`clasificador (LLM)` o `revisión manual`), `motivo` y `palabras`.
+
 ---
 
 ## 7. Preprocesado
@@ -299,13 +350,13 @@ Dos cambios pensados para los nombres propios:
 
 Las queries pasan por **la misma función** (`from preprocesado import preparar`), sin el título.
 
-El resto del preprocesado (N-gramas con `Phrases`, diccionario y filtrado por frecuencia documental con `filter_extremes`) se hace en el notebook, porque es rápido y se eligió comparando variantes (sección 9).
+El resto del preprocesado (N-gramas con `Phrases`, diccionario, filtrado por frecuencia documental con `filter_extremes` y normalización de las palabras) se hace en el notebook, porque es rápido y se eligió comparando variantes (sección 9).
 
 ---
 
 ## 8. Queries de evaluación
 
-**95 queries de tipo *known-item***: cada una describe un fragmento concreto, y el documento de ese fragmento es el único relevante.
+**Evaluación *known-item***: cada query describe un fragmento concreto, y el documento de ese fragmento es el único relevante. Es barata y automática, pero tiene tres limitaciones: si el sistema devuelve otro documento que también responde, cuenta como fallo (los resultados se quedan cortos); la query sale del texto y comparte sus palabras (favorece a los métodos léxicos); y las queries describen pasajes, no son afirmaciones como las que verificará el sistema.
 
 **Generación** (`genera_queries.py`):
 - LLM de pesos abiertos de la UC3M (**`llama3.1:8b`**, servidor `yiyuan.tsc.uc3m.es`), con *temperature* 0,3.
@@ -319,68 +370,75 @@ El resto del preprocesado (N-gramas con `Phrases`, diccionario y filtrado por fr
 
 | | Mantener | Reescribir | Descartar | Total |
 |---|---|---|---|---|
-| Tanda 1 | 25 | 10 | 10 | 45 |
-| Tanda 2 | 49 | 11 | 30 | 90 |
-| **Total** | **74** | **21** | **40** | **135** |
+| Tanda 1 | 23 | 9 | 13 | 45 |
+| Tanda 2 | 47 | 11 | 32 | 90 |
+| **Total** | **70** | **20** | **45** | **135** |
 
-Motivos de descarte: documento fuera de tema (14), query ambigua (el mismo mito está en muchos documentos), trivial (copia el texto o el título) o con errores de contenido. Motivos de reescritura: copiaba el texto, describía mal el fragmento, era demasiado genérica o inventaba algo.
+Motivos de descarte: query ambigua, porque el mismo episodio se cuenta en muchos documentos (22); documento fuera de tema o excluido al limpiar Wikipedia (19); error de contenido (2) y trivial (2). Motivos de reescritura: ambigua o mal enfocada (7), describía mal el fragmento o inventaba algo (7), copiaba el texto (3) y demasiado genérica (3). Cinco de los descartes son posteriores: su documento quedó fuera al limpiar Wikipedia.
 
-**Resultado**: 95 queries (30 de clásicos, 28 de Wikipedia, 24 de YouTube y 13 de WHE), 21 de ellas reescritas.
+**Resultado**: 90 queries (30 de clásicos, 24 de YouTube, 23 de Wikipedia y 13 de WHE), 20 de ellas reescritas.
 
 **Hallazgos de la revisión**:
-- **Hay ruido en Wikipedia**: aparecieron artículos que no son de nuestras mitologías (listas de personas, santos, una raza de oca, baladas…).
+- **Había ruido en Wikipedia**: aparecieron artículos que no son de nuestras mitologías (listas de personas, santos, una raza de oca, baladas…). Fue lo que llevó a la limpieza de la sección 4.1.
 - **La marca de "no es mitología" del LLM no es fiable**: acertó 4 de los 6 fragmentos que marcó y se le escaparon 8.
 - **El prompt de la tanda 2** dio queries más concretas, pero que copian más el texto: el solape medio con el fragmento pasó de 0,46 a 0,64. Esto favorece a los métodos léxicos.
+- **Reescribir no bajó el solape** (0,52 antes y después): la mayoría de las ediciones corregían errores o ambigüedades, no copias. Las reescritas son más largas (casi todas de 13 a 17 palabras, frente a una mediana de 10).
 
 ---
 
 ## 9. Hito 1: baseline de recuperación
 
-Todo está en `notebooks/hito1.ipynb`.
+Todo está en `notebooks/hito1.ipynb`, que además explica en detalle cómo se construyeron el corpus (sección 1) y las queries (sección 2).
 
 **Recuperación**:
-- Se indexan **fragmentos** y se evalúa por **documento**: para cada query se recuperan los 200 fragmentos más parecidos, cada documento puntúa con **su mejor fragmento** y aparece una sola vez.
+- Se indexan **fragmentos** y se evalúa por **documento**: para pedir *k* documentos se recuperan 20·*k* fragmentos (como mínimo 200), cada documento puntúa con **su mejor fragmento** y aparece una sola vez.
 - El **IDF se calcula sobre los fragmentos**.
 - **TF-IDF con similitud coseno**: Gensim, `TfidfModel` con sus valores por defecto (frecuencia sin transformar, IDF log₂(N/df) y vectores normalizados) y `SparseMatrixSimilarity`.
 - **BM25**: librería **`bm25s`**, variante **Lucene**, **k1 = 1,5** y **b = 0,75**.
 - Los dos métodos usan el mismo diccionario, así que ven exactamente los mismos términos.
 
-**Elección del preprocesado**, comparando 12 variantes (N-gramas sí/no × `no_below` 1/2/4 × `no_above` 0,5/0,1):
-- **Sin N-gramas**: empeoran siempre. Al sustituir dos palabras por el N-grama se pierden coincidencias con la query.
-- **Sin filtro por frecuencia documental**: se aplicó y se evaluó, y en búsqueda *known-item* perjudica. Quita justo las palabras raras que mejor identifican un documento: con `no_below=2` desaparece *opuntii*, que solo está en el fragmento relevante de su query. `no_above=0.1` (80 términos como *god*, *greek* o *king*) tampoco ayuda.
-- **k1 y b de BM25**: el barrido (k1 ∈ {0,5; 1,2; 1,5; 2}, b ∈ {0; 0,5; 0,75; 1}) solo da diferencias pequeñas, y ajustadas con las mismas queries, así que se mantienen los valores por defecto.
+**Métricas**: Recall@5, @10, @50 y @100 y MRR@10, con **intervalos de confianza del 95 % por *bootstrap*** (2.000 remuestreos de las queries) y **comparaciones emparejadas** entre sistemas. Una diferencia se considera clara si el intervalo de la diferencia no incluye el 0.
 
-**Resultados** (95 queries):
+**Elección del preprocesado**:
+- **12 variantes** (N-gramas sí/no × `no_below` 1/2/4 × `no_above` 0,5/0,1). Ninguna mejora a la más simple, y algunas empeoran claramente, sobre todo con TF-IDF. Los **N-gramas** empeoran con BM25 en las tres métricas (aunque con 90 queries solo una combinación es claramente peor). El **filtro por frecuencia documental** quita justo las palabras raras que mejor identifican un documento: con `no_below=2` desaparece *opuntii*, que solo está en el fragmento relevante de su query. **Se queda sin N-gramas y sin filtro.**
+- **Normalización**: se probó transcribir las letras nórdicas (*ð*, *þ*, *æ*…) y aplicar *stemming* (Snowball, NLTK). Las letras nórdicas no cambian nada (casi todos esos términos son ligaduras latinas de las traducciones antiguas, como *æther*). El *stemming* **sube claramente Recall@10** (+0,044, unas 4 queries), **pero no el MRR**. La regla fijada antes de ejecutar exigía una mejora clara del MRR de BM25, así que **no se adopta**; queda para volver a probarlo en el Hito 2.
+- **k1 y b de BM25**: en el barrido (k1 ∈ {0,5; 1,2; 1,5; 2}, b ∈ {0; 0,5; 0,75; 1}) ninguna combinación se separa claramente de la de por defecto, así que se mantiene.
 
-| Método | Recall@5 | Recall@10 | MRR@10 |
+**Resultados** (90 queries; entre corchetes, el intervalo del 95 %):
+
+| Métrica | TF-IDF | BM25 | BM25 − TF-IDF |
 |---|---|---|---|
-| TF-IDF | 0,705 | 0,789 | 0,546 |
-| **BM25** | **0,779** | **0,811** | **0,630** |
+| Recall@5 | 0,722 [0,633; 0,811] | **0,800** [0,711; 0,878] | +0,078 [0,022; 0,144] |
+| Recall@10 | 0,800 [0,711; 0,878] | **0,822** [0,744; 0,900] | +0,022 [−0,022; 0,067] |
+| Recall@50 | 0,922 [0,856; 0,967] | **0,956** [0,911; 0,989] | +0,033 [0,000; 0,078] |
+| Recall@100 | 0,956 [0,911; 0,989] | **0,967** [0,922; 1,000] | +0,011 [0,000; 0,033] |
+| MRR@10 | 0,550 [0,462; 0,637] | **0,632** [0,546; 0,721] | +0,081 [0,027; 0,145] |
 
-Por fuente (Recall@10 con BM25): clásicos 0,67, WHE 1,00, Wikipedia 0,93 y YouTube 0,75. Las queries reescritas a mano son más difíciles que las del LLM (con BM25, MRR de 0,50 frente a 0,67).
+BM25 es **claramente mejor en Recall@5 y en MRR**: los dos encuentran el documento en un número parecido de queries, pero BM25 lo coloca más arriba. Con BM25, el documento relevante está entre los 100 primeros en el 97 % de las queries, lo que es buena base para una etapa de reordenación.
 
-**Análisis de errores**: los dos métodos fallan en 17 queries, 10 de ellas de los clásicos. Las causas:
-1. **Gana otro documento del mismo tema** (la más frecuente). Por ejemplo, el artículo *Freyr* o el de *Lethe*. Muchas veces lo devuelto también serviría, pero la evaluación *known-item* solo cuenta el documento de origen.
-2. **La query usa otras palabras que el texto**: "islands of the blessed" frente a *Fortunate Isles*.
-3. **Libros de una misma obra muy parecidos**: los libros de la *Ilíada*.
-4. **Un término clave que no coincide**: una errata del LLM.
+Por fuente (Recall@10 con BM25): clásicos 0,70, WHE 1,00, Wikipedia 0,96 y YouTube 0,75. Los clásicos son la única fuente claramente más difícil. Las queries reescritas a mano también son más difíciles que las del LLM (con BM25, MRR de 0,45 frente a 0,68), y 12 de las 20 son de los clásicos.
 
-**Configuración final del baseline**: lemas de spaCy con el título delante, sin N-gramas, sin filtro por frecuencia documental, y BM25 (`bm25s`, Lucene, k1 = 1,5, b = 0,75).
+**Análisis de errores**: los dos métodos fallan en 15 de las 90 queries, 9 de ellas de los clásicos, pero solo 3 quedan fuera de los 100 primeros con los dos. Las causas:
+1. **Gana otro documento del mismo tema** (la más frecuente). Por ejemplo, los artículos de Wikipedia de *Phaethon*, *Lethe* o *Diomedes* ganan al libro de Ovidio o de la *Ilíada* del que sale la query. Muchas veces lo devuelto también serviría, pero la evaluación *known-item* solo cuenta el documento de origen.
+2. **La query usa otras palabras que el texto**: "islands of the blessed" frente a *Fortunate Isles*, "the love goddess" frente a *Aphrodite*. Son justo las tres que no están entre los 100 primeros.
+3. **Queries demasiado generales**, que encajan con muchos documentos ("Norse mythology vs nature worship").
+4. **El lematizador no une las formas**: en una query, spaCy deja *gods* y *giants* en plural.
+
+**Configuración final del baseline**: lemas de spaCy con el título delante, sin N-gramas, sin filtro por frecuencia documental, sin normalización, y BM25 (`bm25s`, Lucene, k1 = 1,5, b = 0,75).
 
 ---
 
 ## 10. Limitaciones conocidas y mejoras pendientes
 
-- **Ruido en Wikipedia.** En la muestra revisada, entre un 20 % y un 30 % de los documentos de Wikipedia no son de nuestras mitologías. Vienen de la profundidad 3 del recorrido de categorías, de artículos tipo "X in popular culture" o "X in fiction" y de secciones de cultura popular con encabezados no previstos. Se puede validar un filtro mejor con los 45 documentos ya etiquetados en la revisión, o clasificarlos con el LLM.
+- **Filtro de tema de Wikipedia.** La expresión regular de `procesa_wikipedia.py` que exige que el primer párrafo hable de mitos es el paso que más quita (1.345 artículos) y también se lleva artículos buenos (*Muspelheim*, *Ludi Romani*, *Temple of Quirinus*). El clasificador también pierde algunos artículos buenos (templos y tragedias antiguas).
+- **Troceo de YouTube.** Los bloques de 30 segundos se marcan como secciones y la regla de cortar en cada sección se les aplica, así que los fragmentos salen de 140 a 220 palabras y sin solape. Hay que tratar los bloques de tiempo solo como marcas para citar.
 - **Tokens que no coinciden:**
-  - letras nórdicas sin normalizar (*Óðinn* → `oðinn` ≠ `odin`);
-  - singular y plural (`trojans` frente a `trojan`, `gods` frente a `god`) cuando spaCy etiqueta mal frases cortas o en minúscula;
-  - probables errores en los subtítulos automáticos, que no tienen mayúsculas ni puntuación.
-
-  Una forma de probarlo: transliterar las letras nórdicas y aplicar *stemming* (Snowball) como variante.
+  - nombres propios terminados en *-s* que spaCy lematiza distinto según el contexto (*Kronos* → *krono*, *Pyrrhus* → *pyrrhu*, *Ares* → *are*);
+  - singular y plural (*trojans* frente a *trojan*, *gods* frente a *god*): el *stemming* lo corrige y sube Recall@10, pero no se adoptó (sección 9);
+  - errores en los subtítulos automáticos (41 % de los vídeos), que no tienen mayúsculas ni puntuación.
 - **Nombres romanos en los clásicos** (*Jove*, *Venus*): un método léxico no los relaciona con los griegos. Encaja con el Hito 2 (equivalencias de nombres y *embeddings*).
-- **Evaluación**: con 95 queries, una diferencia de 0,01 es una query. Faltan intervalos de confianza (*bootstrap*) y comparaciones por parejas. Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas.
-- **Queries**: q086 tiene una errata (*Automatedon* por *Automedon*) que se escapó en la revisión.
+- **Evaluación**: con 90 queries los intervalos son anchos (unos ±0,08 en Recall@10). Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas. Las queries comparten muchas palabras con su fragmento, lo que favorece a los métodos léxicos.
+- **Reparto de mitologías**: la nórdica pesa poco en clásicos y Wikipedia, y la romana casi no aparece en YouTube.
 - 17 de los 250 vídeos seleccionados no tenían subtítulos en inglés descargables.
 - Pendiente para el Hito 2: decidir qué nivel (experto o popular) se asigna a WHE y a Bulfinch para el experimento de cobertura.
 
@@ -400,5 +458,7 @@ Por todo ello, el texto descargado no se sube al repositorio.
 
 ## 12. Uso de herramientas de IA generativa
 
-- **LLM de la UC3M (`llama3.1:8b`)**: generación de las queries candidatas de evaluación, todas revisadas a mano (sección 8).
-- **Claude (Anthropic)**: asistencia en el diseño del pipeline, la escritura de los scripts y del notebook, la propuesta de decisiones en la revisión de queries (confirmadas por el grupo) y la redacción de la documentación. Todo el código se ejecutó y comprobó en local.
+- **LLM de la UC3M (`llama3.1:8b`)**:
+  - generación de las queries candidatas de evaluación, todas revisadas a mano (sección 8);
+  - clasificación de los artículos de Wikipedia como dentro o fuera de tema, validada con 100 artículos etiquetados a mano y corregida con 255 etiquetas manuales (sección 4.1). Un segundo uso como rescate se probó y se descartó por sus malos resultados.
+- **Claude (Anthropic)**: asistencia en el diseño del pipeline, la escritura de los scripts y del notebook, la propuesta de decisiones en la revisión de queries y de artículos de Wikipedia (confirmadas por el grupo) y la redacción de la documentación. Todo el código se ejecutó y comprobó en local.
