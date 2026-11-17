@@ -10,6 +10,11 @@ consecutivos para no perder contexto en los bordes.
   corto, para no crear fragmentos diminutos), y cada fragmento guarda el nombre
   de su sección.
 - Cada fragmento conserva el id de su documento y tiene uno propio: doc_123_c07.
+- En las transcripciones de YouTube las cabeceras (== t=125 ==) no son secciones,
+  sino marcas de tiempo cada 30 segundos. Con marcas_de_tiempo=True no cortan el
+  fragmento ni anulan el solape: solo sirven para saber en qué segundo empieza
+  cada fragmento. Así los fragmentos de vídeo tienen el mismo tamaño y solape
+  que los del resto de fuentes.
 
 Uso como script (prueba sobre un fichero de documentos .jsonl):
     python src/troceo.py data/processed/clasicos.jsonl
@@ -29,16 +34,17 @@ OBJETIVO = 280          # palabras por fragmento (el profesor sugiere 200-400)
 SOLAPE = 0.15           # 15 % de solapamiento entre fragmentos consecutivos
 MINIMO = 0.5            # no se abre fragmento nuevo en una sección si el actual tiene < 50 % del objetivo
 MAXIMO = 1.4            # el último fragmento se une al anterior si juntos no pasan del 140 % del objetivo
+MAX_FRASE_SOLAPE = int(1.5 * SOLAPE * OBJETIVO)   # 62 palabras: una frase más larga no se repite como solape
 
 CABECERA = re.compile(r"^(=+)\s*(.+?)\s*\1\s*$")         # == Sección ==
 FIN_FRASE = re.compile(r"(?<=[.!?;])\s+(?=[\"“‘'(\[A-Z0-9])")
 
 
-def frases_con_seccion(texto):
+def frases_con_seccion(texto, max_palabras=OBJETIVO):
     """
     Recorre el texto y devuelve una lista de (sección, frase).
     Las cabeceras == Sección == no se devuelven como frases: solo cambian la sección.
-    Las frases muy largas (sin puntos, p. ej. versos) se parten en trozos de OBJETIVO palabras.
+    Las frases muy largas (sin puntos, p. ej. versos) se parten en trozos de max_palabras palabras.
     """
     resultado, seccion = [], ""
     for parrafo in re.split(r"\n\s*\n", texto):
@@ -47,32 +53,42 @@ def frases_con_seccion(texto):
             m = CABECERA.match(linea.strip())
             if m:                              # cabecera: cambia la sección
                 if lineas_texto:
-                    resultado += [(seccion, f) for f in partir_frases(" ".join(lineas_texto))]
+                    resultado += [(seccion, f) for f in partir_frases(" ".join(lineas_texto), max_palabras)]
                     lineas_texto = []
                 seccion = m.group(2)
             elif linea.strip():
                 lineas_texto.append(linea.strip())
         if lineas_texto:
-            resultado += [(seccion, f) for f in partir_frases(" ".join(lineas_texto))]
+            resultado += [(seccion, f) for f in partir_frases(" ".join(lineas_texto), max_palabras)]
     return resultado
 
 
-def partir_frases(parrafo):
-    """Parte un párrafo en frases; las que superan OBJETIVO palabras se cortan por palabras."""
+def partir_frases(parrafo, max_palabras=OBJETIVO):
+    """Parte un párrafo en frases; las que superan max_palabras se cortan por palabras."""
     frases = []
     for f in FIN_FRASE.split(parrafo):
         palabras = f.split()
-        for i in range(0, len(palabras), OBJETIVO):
-            frases.append(" ".join(palabras[i:i + OBJETIVO]))
+        for i in range(0, len(palabras), max_palabras):
+            frases.append(" ".join(palabras[i:i + max_palabras]))
     return [f for f in frases if f]
 
 
-def trocear_documento(doc_id, texto):
+def trocear_documento(doc_id, texto, marcas_de_tiempo=False):
     """
     Parte un documento en fragmentos. Devuelve una lista de diccionarios con
     chunk_id, doc_id, seccion, texto y n_palabras.
+
+    marcas_de_tiempo=True (transcripciones de YouTube): las cabeceras == t=125 == son
+    marcas de tiempo, no secciones. No cortan el fragmento ni anulan el solape, y la
+    "seccion" de cada fragmento es la marca del bloque en el que empieza. Además, como
+    los subtítulos automáticos no tienen puntuación (cada bloque de 30 segundos sería
+    una sola "frase" demasiado larga para el solape), las frases de más de
+    SOLAPE * OBJETIVO palabras (42) se parten en trozos de ese tamaño como mucho.
     """
-    frases = frases_con_seccion(texto)
+    if marcas_de_tiempo:
+        frases = frases_con_seccion(texto, max_palabras=int(SOLAPE * OBJETIVO))
+    else:
+        frases = frases_con_seccion(texto)
     if not frases:
         return []
     n = [len(f.split()) for _, f in frases]
@@ -80,7 +96,7 @@ def trocear_documento(doc_id, texto):
     trozos = []                     # cada trozo es una lista de índices de frases
     actual, palabras = [], 0
     for i, (seccion, _) in enumerate(frases):
-        cambio_seccion = actual and seccion != frases[actual[-1]][0]
+        cambio_seccion = (not marcas_de_tiempo) and actual and seccion != frases[actual[-1]][0]
         # Se cierra el trozo si con la frase nueva pasa del objetivo... salvo que el trozo
         # sea aún muy corto y quepa sin pasar del máximo (así no salen trozos diminutos
         # cuando detrás viene una frase muy larga)
@@ -96,7 +112,10 @@ def trocear_documento(doc_id, texto):
                 for j in reversed(actual):
                     if p >= SOLAPE * OBJETIVO or len(solape) + 1 >= len(actual):
                         break
-                    if n[j] > 1.5 * SOLAPE * OBJETIVO:
+                    if n[j] > MAX_FRASE_SOLAPE:
+                        break
+                    # En los vídeos el solape no pasa del 20 % del objetivo
+                    if marcas_de_tiempo and solape and p + n[j] > 0.20 * OBJETIVO:
                         break
                     solape.insert(0, j)
                     p += n[j]

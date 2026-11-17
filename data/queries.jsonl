@@ -13,18 +13,16 @@
 {"qid": "q020", "query": "how the blinded Cyclops tries to catch the men and they escape tied under the rams", "relevant_ids": ["odisea_09"], "source_chunk": "odisea_09_c21", "fuente": "clasicos"}
 {"qid": "q022", "query": "the islands of the blessed in classical myth and their echoes in English poetry", "relevant_ids": ["bulfinch_25"], "source_chunk": "bulfinch_25_c15", "fuente": "clasicos"}
 {"qid": "q023", "query": "Kronos confused with Chronos, Time, and the Greek and Roman names of the first gods", "relevant_ids": ["bulfinch_01"], "source_chunk": "bulfinch_01_c11", "fuente": "clasicos"}
-{"qid": "q024", "query": "Rise of Rome from mythological perspective with comparisons to fallen civilizations", "relevant_ids": ["ovidio2_050"], "source_chunk": "ovidio2_050_c21", "fuente": "clasicos"}
 {"qid": "q025", "query": "Ulysses' visit to a king's palace in ancient Greece", "relevant_ids": ["bulfinch_23"], "source_chunk": "bulfinch_23_c10", "fuente": "clasicos"}
 {"qid": "q026", "query": "Trojan prince's wife begs him to stay on the walls so their child is not left fatherless", "relevant_ids": ["iliada_06"], "source_chunk": "iliada_06_c20", "fuente": "clasicos"}
 {"qid": "q027", "query": "Apollo is charmed by Hermes' music and poetry on his lyre.", "relevant_ids": ["hesiodo_20"], "source_chunk": "hesiodo_20_c21", "fuente": "clasicos"}
-{"qid": "q028", "query": "What is the role of Freyr in Norse mythology and his relationship with other gods?", "relevant_ids": ["yt_CyU54gV_PWM"], "source_chunk": "yt_CyU54gV_PWM_c03", "fuente": "youtube"}
-{"qid": "q030", "query": "What was the impact of Greek culture on the development of Roman mythology and worship practices?", "relevant_ids": ["yt_kkNRUBZ9GjI"], "source_chunk": "yt_kkNRUBZ9GjI_c02", "fuente": "youtube"}
+{"qid": "q028", "query": "What is the role of Freyr in Norse mythology and his relationship with other gods?", "relevant_ids": ["yt_CyU54gV_PWM"], "source_chunk": "yt_CyU54gV_PWM_c02", "fuente": "youtube"}
 {"qid": "q031", "query": "Thor's complicated relationships with his family members, including a powerful serpent.", "relevant_ids": ["yt_1v9UrKcdqSg"], "source_chunk": "yt_1v9UrKcdqSg_c09", "fuente": "youtube"}
-{"qid": "q032", "query": "What happens when Odin tries to obtain the magical mead of poetry from a giant woman?", "relevant_ids": ["yt_7TVuav-eUVo"], "source_chunk": "yt_7TVuav-eUVo_c03", "fuente": "youtube"}
+{"qid": "q032", "query": "What happens when Odin tries to obtain the magical mead of poetry from a giant woman?", "relevant_ids": ["yt_7TVuav-eUVo"], "source_chunk": "yt_7TVuav-eUVo_c02", "fuente": "youtube"}
 {"qid": "q034", "query": "What is known about the island home of a powerful goddess in Homer's Odyssey?", "relevant_ids": ["yt_kVRzYyRWy9s"], "source_chunk": "yt_kVRzYyRWy9s_c02", "fuente": "youtube"}
-{"qid": "q035", "query": "king meets a young man with one sandal and sends him to fetch the Golden Fleece", "relevant_ids": ["yt_JiFZn0l7EYE"], "source_chunk": "yt_JiFZn0l7EYE_c06", "fuente": "youtube"}
-{"qid": "q036", "query": "Dionysus mythology stories about human counterparts and associations with ancient conquerors and rulers.", "relevant_ids": ["yt_ZfVITWv4z6o"], "source_chunk": "yt_ZfVITWv4z6o_c20", "fuente": "youtube"}
-{"qid": "q037", "query": "Artemis sculpture in Ephesus with unusual objects around her chest explained by two theories.", "relevant_ids": ["yt_y9IF4vE9UGE"], "source_chunk": "yt_y9IF4vE9UGE_c14", "fuente": "youtube"}
+{"qid": "q035", "query": "king meets a young man with one sandal and sends him to fetch the Golden Fleece", "relevant_ids": ["yt_JiFZn0l7EYE"], "source_chunk": "yt_JiFZn0l7EYE_c04", "fuente": "youtube"}
+{"qid": "q036", "query": "Dionysus mythology stories about human counterparts and associations with ancient conquerors and rulers.", "relevant_ids": ["yt_ZfVITWv4z6o"], "source_chunk": "yt_ZfVITWv4z6o_c16", "fuente": "youtube"}
+{"qid": "q037", "query": "Artemis sculpture in Ephesus with unusual objects around her chest explained by two theories.", "relevant_ids": ["yt_y9IF4vE9UGE"], "source_chunk": "yt_y9IF4vE9UGE_c13", "fuente": "youtube"}
 {"qid": "q038", "query": "What is the story of Helen's reunion with her husband in a mythological play?", "relevant_ids": ["whe_122"], "source_chunk": "whe_122_c10", "fuente": "whe"}
 {"qid": "q040", "query": "What is the connection between Lagertha and Thorgerd in Norse mythology?", "relevant_ids": ["whe_092"], "source_chunk": "whe_092_c06", "fuente": "whe"}
 {"qid": "q042", "query": "What is the mythological significance of Ganymede's abduction in ancient Greek literature?", "relevant_ids": ["whe_133"], "source_chunk": "whe_133_c03", "fuente": "whe"}
@@ -56,7 +54,6 @@
 {"qid": "q085", "query": "Ceres sends a nymph to the barren land of Famine to punish a sacrilegious man", "relevant_ids": ["ovidio2_007"], "source_chunk": "ovidio2_007_c04", "fuente": "clasicos"}
 {"qid": "q086", "query": "Automedon's prayer to Jove in Homer's Iliad", "relevant_ids": ["iliada_17"], "source_chunk": "iliada_17_c23", "fuente": "clasicos"}
 {"qid": "q089", "query": "Aeneas vs Idomeneus duel in Greek mythology", "relevant_ids": ["iliada_13"], "source_chunk": "iliada_13_c24", "fuente": "clasicos"}
-{"qid": "q091", "query": "Troy's oath-offerings and single combat for Helen", "relevant_ids": ["iliada_03"], "source_chunk": "iliada_03_c11", "fuente": "clasicos"}
 {"qid": "q092", "query": "Venus wounded by Diomedes in battle", "relevant_ids": ["iliada_05"], "source_chunk": "iliada_05_c17", "fuente": "clasicos"}
 {"qid": "q093", "query": "gods gather in council to watch Trojan War", "relevant_ids": ["iliada_20"], "source_chunk": "iliada_20_c01", "fuente": "clasicos"}
 {"qid": "q094", "query": "mythological plague with snakes and animal deaths", "relevant_ids": ["bulfinch_07"], "source_chunk": "bulfinch_07_c08", "fuente": "clasicos"}
@@ -64,27 +61,24 @@
 {"qid": "q096", "query": "Aegisthus' punishment by the gods after killing Agamemnon", "relevant_ids": ["odisea_01"], "source_chunk": "odisea_01_c02", "fuente": "clasicos"}
 {"qid": "q098", "query": "hunter's songs to the cool breeze are mistaken for words to a nymph, making his wife jealous", "relevant_ids": ["ovidio1_070"], "source_chunk": "ovidio1_070_c02", "fuente": "clasicos"}
 {"qid": "q099", "query": "Thor's encounter with Geirrod in Norse mythology", "relevant_ids": ["edda_prosa_23"], "source_chunk": "edda_prosa_23_c04", "fuente": "clasicos"}
-{"qid": "q100", "query": "Fylgja manifestation in Norse mythology", "relevant_ids": ["yt_qOP8MSLQjRc"], "source_chunk": "yt_qOP8MSLQjRc_c13", "fuente": "youtube"}
-{"qid": "q101", "query": "Labyrinth myth with 14 annual Athenian tributes", "relevant_ids": ["yt_mwKAGwZg86o"], "source_chunk": "yt_mwKAGwZg86o_c03", "fuente": "youtube"}
-{"qid": "q103", "query": "Odin's evolution from life mystery god to all-knowing sky god", "relevant_ids": ["yt_G_X8goiHe5c"], "source_chunk": "yt_G_X8goiHe5c_c12", "fuente": "youtube"}
-{"qid": "q104", "query": "Viking age visual symbolism and its limitations in historical understanding", "relevant_ids": ["yt_lHbD8ko-tU0"], "source_chunk": "yt_lHbD8ko-tU0_c08", "fuente": "youtube"}
-{"qid": "q105", "query": "why people confuse the two Eddas and when the Norse poems were first written down", "relevant_ids": ["yt_ZEAqNZWX010"], "source_chunk": "yt_ZEAqNZWX010_c08", "fuente": "youtube"}
-{"qid": "q106", "query": "Valkyrie rivalry over promised husbands in Norse mythology", "relevant_ids": ["yt_VMrYEq_jNVs"], "source_chunk": "yt_VMrYEq_jNVs_c31", "fuente": "youtube"}
-{"qid": "q108", "query": "Aeneid Book X Turnus rampage across River Tiber", "relevant_ids": ["yt_d2dcqDjxl_c"], "source_chunk": "yt_d2dcqDjxl_c_c12", "fuente": "youtube"}
-{"qid": "q109", "query": "Norse shamanic practice at crossroads and burial mounds", "relevant_ids": ["yt_JowCuymRr9w"], "source_chunk": "yt_JowCuymRr9w_c22", "fuente": "youtube"}
-{"qid": "q110", "query": "Origin of Lucifer title in ancient mythology", "relevant_ids": ["yt__EFJKPP7QNU"], "source_chunk": "yt__EFJKPP7QNU_c04", "fuente": "youtube"}
-{"qid": "q112", "query": "Norse concept of cyclical time vs linear time", "relevant_ids": ["yt_NFJ2UVmpRmM"], "source_chunk": "yt_NFJ2UVmpRmM_c17", "fuente": "youtube"}
-{"qid": "q113", "query": "Hecate symbolism serpent rebirth knowledge labyrinth", "relevant_ids": ["yt_nZwO0N-hRxU"], "source_chunk": "yt_nZwO0N-hRxU_c05", "fuente": "youtube"}
-{"qid": "q114", "query": "bull jumping in ancient Cretan culture", "relevant_ids": ["yt_XaN88NLCoVE"], "source_chunk": "yt_XaN88NLCoVE_c16", "fuente": "youtube"}
+{"qid": "q100", "query": "Fylgja manifestation in Norse mythology", "relevant_ids": ["yt_qOP8MSLQjRc"], "source_chunk": "yt_qOP8MSLQjRc_c10", "fuente": "youtube"}
+{"qid": "q101", "query": "Labyrinth myth with 14 annual Athenian tributes", "relevant_ids": ["yt_mwKAGwZg86o"], "source_chunk": "yt_mwKAGwZg86o_c02", "fuente": "youtube"}
+{"qid": "q103", "query": "Odin's evolution from life mystery god to all-knowing sky god", "relevant_ids": ["yt_G_X8goiHe5c"], "source_chunk": "yt_G_X8goiHe5c_c08", "fuente": "youtube"}
+{"qid": "q104", "query": "Viking age visual symbolism and its limitations in historical understanding", "relevant_ids": ["yt_lHbD8ko-tU0"], "source_chunk": "yt_lHbD8ko-tU0_c06", "fuente": "youtube"}
+{"qid": "q105", "query": "why people confuse the two Eddas and when the Norse poems were first written down", "relevant_ids": ["yt_ZEAqNZWX010"], "source_chunk": "yt_ZEAqNZWX010_c07", "fuente": "youtube"}
+{"qid": "q106", "query": "Valkyrie rivalry over promised husbands in Norse mythology", "relevant_ids": ["yt_VMrYEq_jNVs"], "source_chunk": "yt_VMrYEq_jNVs_c24", "fuente": "youtube"}
+{"qid": "q108", "query": "Aeneid Book X Turnus rampage across River Tiber", "relevant_ids": ["yt_d2dcqDjxl_c"], "source_chunk": "yt_d2dcqDjxl_c_c10", "fuente": "youtube"}
+{"qid": "q110", "query": "Origin of Lucifer title in ancient mythology", "relevant_ids": ["yt__EFJKPP7QNU"], "source_chunk": "yt__EFJKPP7QNU_c03", "fuente": "youtube"}
+{"qid": "q112", "query": "Norse concept of cyclical time vs linear time", "relevant_ids": ["yt_NFJ2UVmpRmM"], "source_chunk": "yt_NFJ2UVmpRmM_c12", "fuente": "youtube"}
+{"qid": "q113", "query": "Hecate symbolism serpent rebirth knowledge labyrinth", "relevant_ids": ["yt_nZwO0N-hRxU"], "source_chunk": "yt_nZwO0N-hRxU_c04", "fuente": "youtube"}
+{"qid": "q114", "query": "bull jumping in ancient Cretan culture", "relevant_ids": ["yt_XaN88NLCoVE"], "source_chunk": "yt_XaN88NLCoVE_c12", "fuente": "youtube"}
 {"qid": "q115", "query": "Loki's truth-telling insults in Old Norse poetry", "relevant_ids": ["yt_TP4NuHaE_Xs"], "source_chunk": "yt_TP4NuHaE_Xs_c02", "fuente": "youtube"}
-{"qid": "q116", "query": "Medusa's beauty and ugliness in Greek mythology", "relevant_ids": ["yt_egNJXvg811g"], "source_chunk": "yt_egNJXvg811g_c34", "fuente": "youtube"}
-{"qid": "q117", "query": "Norse mythology vs nature worship", "relevant_ids": ["yt_r-N-uND6x1U"], "source_chunk": "yt_r-N-uND6x1U_c04", "fuente": "youtube"}
-{"qid": "q119", "query": "Thor's name origins in Indo-European languages", "relevant_ids": ["yt_BXoarBVgUXc"], "source_chunk": "yt_BXoarBVgUXc_c21", "fuente": "youtube"}
+{"qid": "q116", "query": "Medusa's beauty and ugliness in Greek mythology", "relevant_ids": ["yt_egNJXvg811g"], "source_chunk": "yt_egNJXvg811g_c26", "fuente": "youtube"}
+{"qid": "q119", "query": "Thor's name origins in Indo-European languages", "relevant_ids": ["yt_BXoarBVgUXc"], "source_chunk": "yt_BXoarBVgUXc_c16", "fuente": "youtube"}
 {"qid": "q120", "query": "Vejovis Roman god destructive powers invocation", "relevant_ids": ["whe_094"], "source_chunk": "whe_094_c02", "fuente": "whe"}
 {"qid": "q121", "query": "Charon ferryman mythological differences Etruscan version", "relevant_ids": ["whe_131"], "source_chunk": "whe_131_c03", "fuente": "whe"}
 {"qid": "q123", "query": "sea god honoured with games at the Isthmus of Corinth and boat races at Sounion", "relevant_ids": ["whe_108"], "source_chunk": "whe_108_c04", "fuente": "whe"}
 {"qid": "q125", "query": "Heracles' battle strategy against Ares and Cycnus", "relevant_ids": ["whe_038"], "source_chunk": "whe_038_c19", "fuente": "whe"}
 {"qid": "q126", "query": "Dido founding Carthage with a trick involving an ox hide", "relevant_ids": ["whe_056"], "source_chunk": "whe_056_c02", "fuente": "whe"}
 {"qid": "q130", "query": "Zeus' punishment for Thetis after a prophecy about her son", "relevant_ids": ["whe_176"], "source_chunk": "whe_176_c03", "fuente": "whe"}
-{"qid": "q131", "query": "Greek myth representation on pottery and public buildings", "relevant_ids": ["whe_010"], "source_chunk": "whe_010_c02", "fuente": "whe"}
 {"qid": "q133", "query": "tragedy in which the victorious king arrives home from Troy with Priam's prophetess daughter", "relevant_ids": ["whe_089"], "source_chunk": "whe_089_c05", "fuente": "whe"}

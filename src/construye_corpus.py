@@ -62,10 +62,13 @@ def main():
     # 2. Trocear cada documento
     chunks = []
     for doc in corpus.to_dict("records"):
-        for frag in trocear_documento(doc["doc_id"], doc["texto"]):
+        # En YouTube las cabeceras "== t=125 ==" son marcas de tiempo, no secciones:
+        # no cortan los fragmentos ni anulan el solape (ver troceo.py)
+        es_video = doc["fuente"] == "youtube"
+        for frag in trocear_documento(doc["doc_id"], doc["texto"], marcas_de_tiempo=es_video):
             for campo in CAMPOS_EN_CHUNK:
                 frag[campo] = doc[campo]
-            # En YouTube la sección es "t=125": se guarda también el segundo como número
+            # La sección es la marca del bloque en que empieza: se guarda el segundo como número
             if doc["fuente"] == "youtube" and str(frag["seccion"]).startswith("t="):
                 frag["segundo"] = int(frag["seccion"][2:])
             chunks.append(frag)

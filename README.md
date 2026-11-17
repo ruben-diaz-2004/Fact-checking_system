@@ -37,7 +37,7 @@ Dos rasgos propios del tema:
 | Fecha | Entrega | Estado |
 |---|---|---|
 | Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Pendiente de confirmar |
-| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook terminado en la rama `desarrollo`; falta `MILESTONE_1.md`, fijar versiones y pasarlo a `main` |
+| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado en la rama `desarrollo` (troceo de YouTube corregido, 84 queries); falta `MILESTONE_1.md`, fijar versiones y pasarlo a `main` |
 | Vie 4 dic, 23:59 | **Hito 2**: sistema RAG con LLM de pesos abiertos y base de datos vectorial | — |
 | Vie 18 dic, 23:59 | **Hito 3**: extensión (modelado de tópicos o LoRA/QLoRA) | — |
 | Enero | Entrega final (informe y código) y presentación | — |
@@ -68,6 +68,7 @@ Fact-checking_system/
 │   ├── lista_youtube.py              # YouTube: vídeos candidatos
 │   ├── descarga_youtube.py           #   subtítulos
 │   ├── troceo.py                     # troceo en fragmentos
+│   ├── actualiza_source_chunk.py     # reasigna el fragmento de origen de las queries si cambia el troceo
 │   ├── construye_corpus.py           # junta las fuentes y trocea
 │   ├── preprocesado.py               # preprocesado con spaCy
 │   ├── diagnostico.py                # mediciones del corpus y del preprocesado (no cambia nada)
@@ -78,7 +79,7 @@ Fact-checking_system/
 │   ├── youtube_seleccion.csv     # los 250 vídeos elegidos tras la revisión manual
 │   ├── etiquetas_wikipedia.csv   # 255 artículos de Wikipedia etiquetados a mano (dentro/fuera)
 │   ├── wikipedia_excluidos.csv   # los 692 artículos que quedan fuera, con el motivo
-│   ├── queries.jsonl             # las 90 queries de evaluación
+│   ├── queries.jsonl             # las 84 queries de evaluación
 │   ├── revision_queries_t1.csv   # revisión manual de la tanda 1 de queries
 │   ├── revision_queries_t2.csv   # revisión manual de la tanda 2 de queries
 │   ├── raw/                      # NO se sube: descargas tal cual
@@ -131,13 +132,13 @@ Corpus en **inglés**, de cuatro fuentes. Cada documento es una unidad con senti
 
 | Fuente | Tipo de fuente | Documentos | Palabras | Fragmentos | % fragmentos |
 |---|---|---|---|---|---|
-| Wikipedia | enciclopédica | 4.231 | 2,67 M | 12.723 | 62,8 % |
-| Textos clásicos | primaria (Bulfinch: divulgativa) | 365 | 733 k | 3.383 | 16,7 % |
-| YouTube (transcripciones) | divulgativa (experta o popular) | 233 | 535 k | 2.740 | 13,5 % |
-| World History Encyclopedia | divulgativa | 206 | 319 k | 1.428 | 7,0 % |
-| **Total** | | **5.035** | **≈ 4,26 M** | **20.274** | |
+| Wikipedia | enciclopédica | 4.231 | 2,67 M | 12.723 | 64,3 % |
+| Textos clásicos | primaria (Bulfinch: divulgativa) | 365 | 733 k | 3.383 | 17,1 % |
+| YouTube (transcripciones) | divulgativa (experta o popular) | 233 | 535 k | 2.258 | 11,4 % |
+| World History Encyclopedia | divulgativa | 206 | 319 k | 1.428 | 7,2 % |
+| **Total** | | **5.035** | **≈ 4,26 M** | **19.792** | |
 
-Fragmentos por tipo de fuente: 12.723 enciclopédicos, 4.700 divulgativos y 2.851 primarios. Las mitologías no están repartidas por igual: la griega domina en las fuentes escritas, la nórdica tiene poca presencia en los clásicos (solo las dos *Eddas*) y en Wikipedia, y en YouTube es la mayoritaria. El detalle, con gráficas, está en la sección 1 del notebook.
+Fragmentos por tipo de fuente: 12.723 enciclopédicos, 4.218 divulgativos y 2.851 primarios. Las mitologías no están repartidas por igual: la griega domina en las fuentes escritas, la nórdica tiene poca presencia en los clásicos (solo las dos *Eddas*) y en Wikipedia, y en YouTube es la mayoritaria. El detalle, con gráficas, está en la sección 1 del notebook.
 
 ### 4.1. Wikipedia
 
@@ -209,11 +210,11 @@ Fragmentos por tipo de fuente: 12.723 enciclopédicos, 4.700 divulgativos y 2.85
 El **fragmento** es la unidad que se indexa y se recupera. Se trocea porque los documentos son muy desiguales (de unas decenas de palabras a decenas de miles), porque la prueba que se cite tiene que ser corta y porque los modelos de *embeddings* del Hito 2 tienen un límite de longitud.
 
 - Unas **280 palabras** por fragmento, con un **15 % de solape** entre fragmentos consecutivos.
-- Se respetan las frases (nunca se corta una a la mitad) y las secciones: se intenta empezar fragmento nuevo al cambiar de sección, y al cambiar de sección no hay solape.
+- Se respetan las frases (solo se parten las de más de 280 palabras, como versos sin puntuación) y las secciones: se intenta empezar fragmento nuevo al cambiar de sección, y al cambiar de sección no hay solape.
 - Ningún fragmento pasa de 1,4 veces el objetivo; si el último queda muy corto, se une al anterior.
-- En YouTube, cada fragmento guarda el segundo en que empieza (`segundo`).
+- En YouTube, las marcas de tiempo de los bloques de 30 segundos **no son secciones**: no cortan el fragmento ni quitan el solape, y solo sirven para que cada fragmento guarde el segundo en que empieza (`segundo`). Como los subtítulos automáticos no tienen puntuación, en los vídeos las frases de más de 42 palabras se parten en trozos de ese tamaño para que el solape funcione.
 
-Resultado: 20.274 fragmentos, de unas 229 palabras de media. Clásicos y WHE se acercan al objetivo y casi siempre solapan; en Wikipedia hay muchos fragmentos cortos (artículos y secciones cortas). **En YouTube los fragmentos salen más cortos de lo previsto** (la mayoría de 140 a 220 palabras) y casi nunca solapan, porque los bloques de 30 segundos cuentan como secciones (sección 10).
+Resultado: 19.792 fragmentos, de unas 238 palabras de media. Clásicos, WHE y YouTube se acercan al objetivo (264, 252 y 266 palabras de media) y casi siempre solapan (el 95 %, el 66 % y el 100 % de los pares de fragmentos seguidos); en Wikipedia hay muchos fragmentos cortos (artículos y secciones cortas). En una primera versión, los bloques de 30 segundos de YouTube contaban como secciones y los fragmentos de vídeo salían de 140 a 220 palabras y casi sin solape (2.740 fragmentos); se corrigió antes de entregar el Hito 1 para fijar la unidad de indexación, sin cambiar ningún fragmento de las otras fuentes. Si se vuelve a cambiar el troceo, `actualiza_source_chunk.py` reasigna el `source_chunk` de las queries (sección 5).
 
 ---
 
@@ -242,6 +243,9 @@ python src/descarga_youtube.py             # usa data/youtube_seleccion.csv (~6 
 
 # 5. Corpus y fragmentos
 python src/construye_corpus.py
+# (solo si se cambia el troceo y ya había queries: antes de construir, copiar el chunks.jsonl
+#  anterior a data/processed/chunks_antes.jsonl, y después ejecutar
+#  python src/actualiza_source_chunk.py y python src/crea_queries.py)
 
 # 6. Preprocesado con spaCy (~3-4 min con 2 procesos)
 python src/preprocesado.py --procesos 2
@@ -297,6 +301,7 @@ python src/crea_queries.py                       # junta las tablas de revisión
 | `genera_queries.py` | `chunks.jsonl` + LLM | `data/processed/queries_candidatas_t{N}.jsonl` |
 | `exporta_revision.py` | candidatas + `chunks.jsonl` | `data/processed/revision_queries_t{N}.md` |
 | `crea_queries.py` | `data/revision_queries_t*.csv` | `data/queries.jsonl` |
+| `actualiza_source_chunk.py` | `chunks_antes.jsonl`, `chunks.jsonl`, `data/revision_queries_t*.csv` | `data/revision_queries_t*.csv` (columna `source_chunk`) |
 
 **Qué necesita el notebook**: `data/processed/` (`corpus.jsonl`, `chunks.jsonl`, `chunks_tokens.jsonl`, `clasificacion_final_wikipedia.csv`), los tres CSV de `data/raw/wikipedia/` y los ficheros de `data/` que están en el repositorio.
 
@@ -370,19 +375,19 @@ El resto del preprocesado (N-gramas con `Phrases`, diccionario, filtrado por fre
 
 | | Mantener | Reescribir | Descartar | Total |
 |---|---|---|---|---|
-| Tanda 1 | 23 | 9 | 13 | 45 |
-| Tanda 2 | 47 | 11 | 32 | 90 |
-| **Total** | **70** | **20** | **45** | **135** |
+| Tanda 1 | 21 | 9 | 15 | 45 |
+| Tanda 2 | 43 | 11 | 36 | 90 |
+| **Total** | **64** | **20** | **51** | **135** |
 
-Motivos de descarte: query ambigua, porque el mismo episodio se cuenta en muchos documentos (22); documento fuera de tema o excluido al limpiar Wikipedia (19); error de contenido (2) y trivial (2). Motivos de reescritura: ambigua o mal enfocada (7), describía mal el fragmento o inventaba algo (7), copiaba el texto (3) y demasiado genérica (3). Cinco de los descartes son posteriores: su documento quedó fuera al limpiar Wikipedia.
+Motivos de descarte: query ambigua, porque el mismo episodio se cuenta en muchos documentos (22); documento fuera de tema o excluido al limpiar Wikipedia (19); copia el texto (3), demasiado genérica (3), error de contenido (2) y trivial (2). Motivos de reescritura: ambigua o mal enfocada (7), describía mal el fragmento o inventaba algo (7), copiaba el texto (3) y demasiado genérica (3). Cinco de los descartes son posteriores: su documento quedó fuera al limpiar Wikipedia. Otros seis salen de una segunda revisión al terminar el hito: q091, q109 y q131 copiaban el texto (solape 1,0) y q024, q030 y q117 eran demasiado genéricas. Las tres genéricas se detectaron porque fallaban con los dos métodos, así que quitarlas hace los resultados algo optimistas.
 
-**Resultado**: 90 queries (30 de clásicos, 24 de YouTube, 23 de Wikipedia y 13 de WHE), 20 de ellas reescritas.
+**Resultado**: 84 queries (28 de clásicos, 23 de Wikipedia, 21 de YouTube y 12 de WHE), 20 de ellas reescritas.
 
 **Hallazgos de la revisión**:
 - **Había ruido en Wikipedia**: aparecieron artículos que no son de nuestras mitologías (listas de personas, santos, una raza de oca, baladas…). Fue lo que llevó a la limpieza de la sección 4.1.
 - **La marca de "no es mitología" del LLM no es fiable**: acertó 4 de los 6 fragmentos que marcó y se le escaparon 8.
 - **El prompt de la tanda 2** dio queries más concretas, pero que copian más el texto: el solape medio con el fragmento pasó de 0,46 a 0,64. Esto favorece a los métodos léxicos.
-- **Reescribir no bajó el solape** (0,52 antes y después): la mayoría de las ediciones corregían errores o ambigüedades, no copias. Las reescritas son más largas (casi todas de 13 a 17 palabras, frente a una mediana de 10).
+- **Reescribir apenas bajó el solape** (0,52 antes y 0,51 después): la mayoría de las ediciones corregían errores o ambigüedades, no copias. Las reescritas son más largas (casi todas de 13 a 17 palabras, frente a una mediana de 10).
 
 ---
 
@@ -400,28 +405,28 @@ Todo está en `notebooks/hito1.ipynb`, que además explica en detalle cómo se c
 **Métricas**: Recall@5, @10, @50 y @100 y MRR@10, con **intervalos de confianza del 95 % por *bootstrap*** (2.000 remuestreos de las queries) y **comparaciones emparejadas** entre sistemas. Una diferencia se considera clara si el intervalo de la diferencia no incluye el 0.
 
 **Elección del preprocesado**:
-- **12 variantes** (N-gramas sí/no × `no_below` 1/2/4 × `no_above` 0,5/0,1). Ninguna mejora a la más simple, y algunas empeoran claramente, sobre todo con TF-IDF. Los **N-gramas** empeoran con BM25 en las tres métricas (aunque con 90 queries solo una combinación es claramente peor). El **filtro por frecuencia documental** quita justo las palabras raras que mejor identifican un documento: con `no_below=2` desaparece *opuntii*, que solo está en el fragmento relevante de su query. **Se queda sin N-gramas y sin filtro.**
-- **Normalización**: se probó transcribir las letras nórdicas (*ð*, *þ*, *æ*…) y aplicar *stemming* (Snowball, NLTK). Las letras nórdicas no cambian nada (casi todos esos términos son ligaduras latinas de las traducciones antiguas, como *æther*). El *stemming* **sube claramente Recall@10** (+0,044, unas 4 queries), **pero no el MRR**. La regla fijada antes de ejecutar exigía una mejora clara del MRR de BM25, así que **no se adopta**; queda para volver a probarlo en el Hito 2.
+- **12 variantes** (N-gramas sí/no × `no_below` 1/2/4 × `no_above` 0,5/0,1). Ninguna mejora a la más simple. Los **N-gramas** empeoran con BM25 en las tres métricas, y claramente en las tres combinaciones con más filtros. El **filtro por frecuencia documental** quita justo las palabras raras que mejor identifican un documento: con `no_below=2` desaparece *opuntii*, que solo está en el fragmento relevante de su query. **Se queda sin N-gramas y sin filtro.**
+- **Normalización**: se probó transcribir las letras nórdicas (*ð*, *þ*, *æ*…) y aplicar *stemming* (Snowball, NLTK). Las letras nórdicas no cambian nada (casi todos esos términos son ligaduras latinas de las traducciones antiguas, como *æther*). El *stemming* **sube Recall@10** (+0,024 con BM25 y +0,036 con TF-IDF, con intervalos que empiezan justo en 0), **pero no el MRR**. La regla fijada antes de ejecutar exigía una mejora clara del MRR de BM25, así que **no se adopta**; queda para volver a probarlo en el Hito 2.
 - **k1 y b de BM25**: en el barrido (k1 ∈ {0,5; 1,2; 1,5; 2}, b ∈ {0; 0,5; 0,75; 1}) ninguna combinación se separa claramente de la de por defecto, así que se mantiene.
 
-**Resultados** (90 queries; entre corchetes, el intervalo del 95 %):
+**Resultados** (84 queries; entre corchetes, el intervalo del 95 %):
 
 | Métrica | TF-IDF | BM25 | BM25 − TF-IDF |
 |---|---|---|---|
-| Recall@5 | 0,722 [0,633; 0,811] | **0,800** [0,711; 0,878] | +0,078 [0,022; 0,144] |
-| Recall@10 | 0,800 [0,711; 0,878] | **0,822** [0,744; 0,900] | +0,022 [−0,022; 0,067] |
-| Recall@50 | 0,922 [0,856; 0,967] | **0,956** [0,911; 0,989] | +0,033 [0,000; 0,078] |
-| Recall@100 | 0,956 [0,911; 0,989] | **0,967** [0,922; 1,000] | +0,011 [0,000; 0,033] |
-| MRR@10 | 0,550 [0,462; 0,637] | **0,632** [0,546; 0,721] | +0,081 [0,027; 0,145] |
+| Recall@5 | 0,774 [0,679; 0,857] | **0,810** [0,726; 0,893] | +0,036 [−0,024; 0,095] |
+| Recall@10 | 0,821 [0,738; 0,893] | **0,845** [0,762; 0,917] | +0,024 [−0,024; 0,071] |
+| Recall@50 | 0,917 [0,857; 0,976] | **0,952** [0,905; 0,988] | +0,036 [0,000; 0,083] |
+| Recall@100 | 0,952 [0,905; 0,988] | **0,976** [0,940; 1,000] | +0,024 [0,000; 0,060] |
+| MRR@10 | 0,558 [0,473; 0,644] | **0,645** [0,561; 0,733] | +0,087 [0,027; 0,152] |
 
-BM25 es **claramente mejor en Recall@5 y en MRR**: los dos encuentran el documento en un número parecido de queries, pero BM25 lo coloca más arriba. Con BM25, el documento relevante está entre los 100 primeros en el 97 % de las queries, lo que es buena base para una etapa de reordenación.
+BM25 es **claramente mejor solo en MRR**: los dos encuentran el documento en un número parecido de queries, pero BM25 lo coloca más arriba. Con BM25, el documento relevante está entre los 100 primeros en el 98 % de las queries, lo que es buena base para una etapa de reordenación (*reranker*, Hito 2).
 
-Por fuente (Recall@10 con BM25): clásicos 0,70, WHE 1,00, Wikipedia 0,96 y YouTube 0,75. Los clásicos son la única fuente claramente más difícil. Las queries reescritas a mano también son más difíciles que las del LLM (con BM25, MRR de 0,45 frente a 0,68), y 12 de las 20 son de los clásicos.
+Por fuente (Recall@10 con BM25): clásicos 0,71, WHE 1,00, Wikipedia 0,96 y YouTube 0,81. Los clásicos son la única fuente claramente más difícil. Las queries reescritas a mano también son más difíciles que las del LLM (con BM25, MRR de 0,46 frente a 0,70), y 12 de las 20 son de los clásicos.
 
-**Análisis de errores**: los dos métodos fallan en 15 de las 90 queries, 9 de ellas de los clásicos, pero solo 3 quedan fuera de los 100 primeros con los dos. Las causas:
+**Análisis de errores**: los dos métodos fallan en 12 de las 84 queries, 8 de ellas de los clásicos, pero solo 2 quedan fuera de los 100 primeros con los dos. Las causas:
 1. **Gana otro documento del mismo tema** (la más frecuente). Por ejemplo, los artículos de Wikipedia de *Phaethon*, *Lethe* o *Diomedes* ganan al libro de Ovidio o de la *Ilíada* del que sale la query. Muchas veces lo devuelto también serviría, pero la evaluación *known-item* solo cuenta el documento de origen.
-2. **La query usa otras palabras que el texto**: "islands of the blessed" frente a *Fortunate Isles*, "the love goddess" frente a *Aphrodite*. Son justo las tres que no están entre los 100 primeros.
-3. **Queries demasiado generales**, que encajan con muchos documentos ("Norse mythology vs nature worship").
+2. **La query usa otras palabras que el texto**: "islands of the blessed" frente a *Fortunate Isles*, "the love goddess" frente a *Aphrodite*. Son justo las tres que quedan más lejos (dos fuera de los 100 primeros y una en el puesto 99).
+3. **Queries demasiado generales**, que encajan con muchos documentos ("Norse mythology vs nature worship"). Las tres que había se descartaron en la segunda revisión (sección 8).
 4. **El lematizador no une las formas**: en una query, spaCy deja *gods* y *giants* en plural.
 
 **Configuración final del baseline**: lemas de spaCy con el título delante, sin N-gramas, sin filtro por frecuencia documental, sin normalización, y BM25 (`bm25s`, Lucene, k1 = 1,5, b = 0,75).
@@ -431,13 +436,12 @@ Por fuente (Recall@10 con BM25): clásicos 0,70, WHE 1,00, Wikipedia 0,96 y YouT
 ## 10. Limitaciones conocidas y mejoras pendientes
 
 - **Filtro de tema de Wikipedia.** La expresión regular de `procesa_wikipedia.py` que exige que el primer párrafo hable de mitos es el paso que más quita (1.345 artículos) y también se lleva artículos buenos (*Muspelheim*, *Ludi Romani*, *Temple of Quirinus*). El clasificador también pierde algunos artículos buenos (templos y tragedias antiguas).
-- **Troceo de YouTube.** Los bloques de 30 segundos se marcan como secciones y la regla de cortar en cada sección se les aplica, así que los fragmentos salen de 140 a 220 palabras y sin solape. Hay que tratar los bloques de tiempo solo como marcas para citar.
 - **Tokens que no coinciden:**
   - nombres propios terminados en *-s* que spaCy lematiza distinto según el contexto (*Kronos* → *krono*, *Pyrrhus* → *pyrrhu*, *Ares* → *are*);
   - singular y plural (*trojans* frente a *trojan*, *gods* frente a *god*): el *stemming* lo corrige y sube Recall@10, pero no se adoptó (sección 9);
   - errores en los subtítulos automáticos (41 % de los vídeos), que no tienen mayúsculas ni puntuación.
 - **Nombres romanos en los clásicos** (*Jove*, *Venus*): un método léxico no los relaciona con los griegos. Encaja con el Hito 2 (equivalencias de nombres y *embeddings*).
-- **Evaluación**: con 90 queries los intervalos son anchos (unos ±0,08 en Recall@10). Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas. Las queries comparten muchas palabras con su fragmento, lo que favorece a los métodos léxicos.
+- **Evaluación**: con 84 queries los intervalos son anchos (unos ±0,08 en Recall@10). Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas. Las queries comparten muchas palabras con su fragmento, lo que favorece a los métodos léxicos.
 - **Reparto de mitologías**: la nórdica pesa poco en clásicos y Wikipedia, y la romana casi no aparece en YouTube.
 - 17 de los 250 vídeos seleccionados no tenían subtítulos en inglés descargables.
 - Pendiente para el Hito 2: decidir qué nivel (experto o popular) se asigna a WHE y a Bulfinch para el experimento de cobertura.

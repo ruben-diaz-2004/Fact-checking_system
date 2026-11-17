@@ -44,7 +44,7 @@ q087,2,clasicos,"Bulfinch, Chapter II: Prometheus and Pandora",bulfinch_02,bulfi
 q088,2,clasicos,"Apollodorus, Epitome 7",apolodoro_40,apolodoro_40_c09,0.57,descartar,Ambigua: el sudario de Penélope está en muchos documentos,Penelope's trick with the shroud of Laertes in Homer's Odyssey,
 q089,2,clasicos,"Iliad, Book XIII",iliada_13,iliada_13_c24,0.4,mantener,,Aeneas vs Idomeneus duel in Greek mythology,Aeneas vs Idomeneus duel in Greek mythology
 q090,2,clasicos,Metamorphoses IV.271-284: Daphnis is turned into a stone,ovidio1_042,ovidio1_042_c01,0.0,descartar,Ambigua: amores transformados (muy vaga) está en muchos documentos,mythological stories about shape-shifting lovers,
-q091,2,clasicos,"Iliad, Book III",iliada_03,iliada_03_c11,1.0,mantener,,Troy's oath-offerings and single combat for Helen,Troy's oath-offerings and single combat for Helen
+q091,2,clasicos,"Iliad, Book III",iliada_03,iliada_03_c11,1.0,descartar,Copia el texto (solape 1.00): todas sus palabras están en el fragmento,Troy's oath-offerings and single combat for Helen,
 q092,2,clasicos,"Iliad, Book V",iliada_05,iliada_05_c17,0.75,mantener,,Venus wounded by Diomedes in battle,Venus wounded by Diomedes in battle
 q093,2,clasicos,"Iliad, Book XX",iliada_20,iliada_20_c01,0.8,mantener,,gods gather in council to watch Trojan War,gods gather in council to watch Trojan War
 q094,2,clasicos,"Bulfinch, Chapter VII: Cadmus. The Myrmidons.",bulfinch_07,bulfinch_07_c08,0.33,mantener,,mythological plague with snakes and animal deaths,mythological plague with snakes and animal deaths
@@ -53,26 +53,26 @@ q096,2,clasicos,"Odyssey, Book I",odisea_01,odisea_01_c02,0.67,mantener,,Aegisth
 q097,2,clasicos,"Odyssey, Book XXIII",odisea_23,odisea_23_c11,0.43,descartar,Ambigua: reencuentro de Ulises y Penélope está en muchos documentos,Ulysses reunion with Penelope after long absence,
 q098,2,clasicos,"Metamorphoses VII.794-865: Procris, jealous of Cephalus, in her turn, goes to the forest, which she supposes to be the scene of his infidelity, to ",ovidio1_070,ovidio1_070_c02,0.5,editar,Describe mal la escena,Procris mistaken for object of love,"hunter's songs to the cool breeze are mistaken for words to a nymph, making his wife jealous"
 q099,2,clasicos,Skaldskaparmal: Thor’s Journey To Geirrod’s.,edda_prosa_23,edda_prosa_23_c04,0.5,mantener,,Thor's encounter with Geirrod in Norse mythology,Thor's encounter with Geirrod in Norse mythology
-q100,2,youtube,Norse Spirituality - The Parts of the Self,yt_qOP8MSLQjRc,yt_qOP8MSLQjRc_c13,0.5,mantener,,Fylgja manifestation in Norse mythology,Fylgja manifestation in Norse mythology
-q101,2,youtube,Theseus and the Minotaur | The Complete Greek Myth,yt_mwKAGwZg86o,yt_mwKAGwZg86o_c03,0.17,mantener,,Labyrinth myth with 14 annual Athenian tributes,Labyrinth myth with 14 annual Athenian tributes
+q100,2,youtube,Norse Spirituality - The Parts of the Self,yt_qOP8MSLQjRc,yt_qOP8MSLQjRc_c10,0.5,mantener,,Fylgja manifestation in Norse mythology,Fylgja manifestation in Norse mythology
+q101,2,youtube,Theseus and the Minotaur | The Complete Greek Myth,yt_mwKAGwZg86o,yt_mwKAGwZg86o_c02,0.17,mantener,,Labyrinth myth with 14 annual Athenian tributes,Labyrinth myth with 14 annual Athenian tributes
 q102,2,youtube,The Aesir-Vanir War - Norse - Extra Mythology,yt_g9TET6YTYrk,yt_g9TET6YTYrk_c01,0.8,descartar,Ambigua: guerra de Æsir y Vanir está en muchos documentos,Norse mythology Aesir Vanir war origin,
-q103,2,youtube,The Wisdom of Odin,yt_G_X8goiHe5c,yt_G_X8goiHe5c_c12,0.5,mantener,,Odin's evolution from life mystery god to all-knowing sky god,Odin's evolution from life mystery god to all-knowing sky god
-q104,2,youtube,Norse Symbols (and Their Unknowable Meanings),yt_lHbD8ko-tU0,yt_lHbD8ko-tU0_c08,0.5,mantener,,Viking age visual symbolism and its limitations in historical understanding,Viking age visual symbolism and its limitations in historical understanding
-q105,2,youtube,Norse myth was not made up by Christians,yt_ZEAqNZWX010,yt_ZEAqNZWX010_c08,0.5,editar,Ambigua,Poetic Edda manuscript history,why people confuse the two Eddas and when the Norse poems were first written down
-q106,2,youtube,Valkyries (Valkyrjur),yt_VMrYEq_jNVs,yt_VMrYEq_jNVs_c31,0.29,mantener,,Valkyrie rivalry over promised husbands in Norse mythology,Valkyrie rivalry over promised husbands in Norse mythology
+q103,2,youtube,The Wisdom of Odin,yt_G_X8goiHe5c,yt_G_X8goiHe5c_c08,0.5,mantener,,Odin's evolution from life mystery god to all-knowing sky god,Odin's evolution from life mystery god to all-knowing sky god
+q104,2,youtube,Norse Symbols (and Their Unknowable Meanings),yt_lHbD8ko-tU0,yt_lHbD8ko-tU0_c06,0.5,mantener,,Viking age visual symbolism and its limitations in historical understanding,Viking age visual symbolism and its limitations in historical understanding
+q105,2,youtube,Norse myth was not made up by Christians,yt_ZEAqNZWX010,yt_ZEAqNZWX010_c07,0.5,editar,Ambigua,Poetic Edda manuscript history,why people confuse the two Eddas and when the Norse poems were first written down
+q106,2,youtube,Valkyries (Valkyrjur),yt_VMrYEq_jNVs,yt_VMrYEq_jNVs_c24,0.29,mantener,,Valkyrie rivalry over promised husbands in Norse mythology,Valkyrie rivalry over promised husbands in Norse mythology
 q107,2,youtube,How Thor got his hammer - Scott A. Mellor,yt_Qytj-DbXMKQ,yt_Qytj-DbXMKQ_c01,0.57,descartar,Ambigua: el pelo de Sif está en muchos documentos,Loki tricks Thor's wife Sif into losing her hair,
-q108,2,youtube,The Roman Epic Poem The Aeneid: Introduction and Summary,yt_d2dcqDjxl_c,yt_d2dcqDjxl_c_c12,0.86,mantener,,Aeneid Book X Turnus rampage across River Tiber,Aeneid Book X Turnus rampage across River Tiber
-q109,2,youtube,Norse Religion: Cult of the Dead,yt_JowCuymRr9w,yt_JowCuymRr9w_c22,1.0,mantener,,Norse shamanic practice at crossroads and burial mounds,Norse shamanic practice at crossroads and burial mounds
-q110,2,youtube,Aphrodite the Light Bringer | Tiny Epics,yt__EFJKPP7QNU,yt__EFJKPP7QNU_c04,0.6,mantener,,Origin of Lucifer title in ancient mythology,Origin of Lucifer title in ancient mythology
-q111,2,youtube,Hecate: Goddess of Witchcraft & Necromancy - (Greek Mythology Explained),yt_ylF7rqVsLEg,yt_ylF7rqVsLEg_c07,0.86,descartar,Ambigua: Hécate (muy vaga) está en muchos documentos,Greek goddess with underworld authority and prophetic powers,
-q112,2,youtube,Wyrd and Orlog - The Norse Destiny,yt_NFJ2UVmpRmM,yt_NFJ2UVmpRmM_c17,0.8,mantener,,Norse concept of cyclical time vs linear time,Norse concept of cyclical time vs linear time
-q113,2,youtube,The Cult of Hecate,yt_nZwO0N-hRxU,yt_nZwO0N-hRxU_c05,0.83,mantener,,Hecate symbolism serpent rebirth knowledge labyrinth,Hecate symbolism serpent rebirth knowledge labyrinth
-q114,2,youtube,Solving the Ancient Mystery of Knossos and the Minotaur,yt_XaN88NLCoVE,yt_XaN88NLCoVE_c16,0.4,mantener,,bull jumping in ancient Cretan culture,bull jumping in ancient Cretan culture
+q108,2,youtube,The Roman Epic Poem The Aeneid: Introduction and Summary,yt_d2dcqDjxl_c,yt_d2dcqDjxl_c_c10,0.86,mantener,,Aeneid Book X Turnus rampage across River Tiber,Aeneid Book X Turnus rampage across River Tiber
+q109,2,youtube,Norse Religion: Cult of the Dead,yt_JowCuymRr9w,yt_JowCuymRr9w_c18,1.0,descartar,Copia el texto (solape 1.00): todas sus palabras están en el fragmento,Norse shamanic practice at crossroads and burial mounds,
+q110,2,youtube,Aphrodite the Light Bringer | Tiny Epics,yt__EFJKPP7QNU,yt__EFJKPP7QNU_c03,0.6,mantener,,Origin of Lucifer title in ancient mythology,Origin of Lucifer title in ancient mythology
+q111,2,youtube,Hecate: Goddess of Witchcraft & Necromancy - (Greek Mythology Explained),yt_ylF7rqVsLEg,yt_ylF7rqVsLEg_c06,0.86,descartar,Ambigua: Hécate (muy vaga) está en muchos documentos,Greek goddess with underworld authority and prophetic powers,
+q112,2,youtube,Wyrd and Orlog - The Norse Destiny,yt_NFJ2UVmpRmM,yt_NFJ2UVmpRmM_c12,0.8,mantener,,Norse concept of cyclical time vs linear time,Norse concept of cyclical time vs linear time
+q113,2,youtube,The Cult of Hecate,yt_nZwO0N-hRxU,yt_nZwO0N-hRxU_c04,0.83,mantener,,Hecate symbolism serpent rebirth knowledge labyrinth,Hecate symbolism serpent rebirth knowledge labyrinth
+q114,2,youtube,Solving the Ancient Mystery of Knossos and the Minotaur,yt_XaN88NLCoVE,yt_XaN88NLCoVE_c12,0.4,mantener,,bull jumping in ancient Cretan culture,bull jumping in ancient Cretan culture
 q115,2,youtube,Lokasenna: The Norse Poem of Loki's Locker Talk,yt_TP4NuHaE_Xs,yt_TP4NuHaE_Xs_c02,0.83,mantener,,Loki's truth-telling insults in Old Norse poetry,Loki's truth-telling insults in Old Norse poetry
-q116,2,youtube,Medusa The Real History | Greek Mythology,yt_egNJXvg811g,yt_egNJXvg811g_c34,0.8,mantener,,Medusa's beauty and ugliness in Greek mythology,Medusa's beauty and ugliness in Greek mythology
-q117,2,youtube,The Sun in Norse Myth,yt_r-N-uND6x1U,yt_r-N-uND6x1U_c04,0.5,mantener,,Norse mythology vs nature worship,Norse mythology vs nature worship
+q116,2,youtube,Medusa The Real History | Greek Mythology,yt_egNJXvg811g,yt_egNJXvg811g_c26,0.8,mantener,,Medusa's beauty and ugliness in Greek mythology,Medusa's beauty and ugliness in Greek mythology
+q117,2,youtube,The Sun in Norse Myth,yt_r-N-uND6x1U,yt_r-N-uND6x1U_c03,0.5,descartar,Demasiado genérica: encaja con muchos documentos (falló con los dos métodos),Norse mythology vs nature worship,
 q118,2,youtube,Miscellaneous Myths: The Theogony (Greek Creation Myth),yt_Q9RGT0ICHpY,yt_Q9RGT0ICHpY_c03,0.6,descartar,Ambigua: castración de Urano está en muchos documentos,Cronus castrates Uranus with a sickle,
-q119,2,youtube,"Thor's ""True Name""",yt_BXoarBVgUXc,yt_BXoarBVgUXc_c21,0.83,mantener,,Thor's name origins in Indo-European languages,Thor's name origins in Indo-European languages
+q119,2,youtube,"Thor's ""True Name""",yt_BXoarBVgUXc,yt_BXoarBVgUXc_c16,0.83,mantener,,Thor's name origins in Indo-European languages,Thor's name origins in Indo-European languages
 q120,2,whe,Vejovis,whe_094,whe_094_c02,0.6,mantener,,Vejovis Roman god destructive powers invocation,Vejovis Roman god destructive powers invocation
 q121,2,whe,Charon: The Ferryman to the Dead in Greek Mythology,whe_131,whe_131_c03,0.83,mantener,,Charon ferryman mythological differences Etruscan version,Charon ferryman mythological differences Etruscan version
 q122,2,whe,A Visual Who's Who of Greek Mythology,whe_058,whe_058_c10,0.6,descartar,Ambigua: Hades y la granada está en muchos documentos,Greek god associated with pomegranate trickery,
@@ -84,7 +84,7 @@ q127,2,whe,Roman Mythology,whe_083,whe_083_c06,0.8,descartar,Ambigua: adopción 
 q128,2,whe,Odyssey: Homer's Epic Poem of Redemption,whe_064,whe_064_c13,1.0,descartar,Ambigua: matanza de los pretendientes está en muchos documentos,Odysseus kills suitors in palace hall with spears and sword,
 q129,2,whe,Zeus,whe_021,whe_021_c01,0.8,descartar,Error de contenido: a Zeus no se lo tragó Cronos (y ambigua),Zeus swallowed by Cronus as baby myth,
 q130,2,whe,Thetis,whe_176,whe_176_c03,0.67,mantener,,Zeus' punishment for Thetis after a prophecy about her son,Zeus' punishment for Thetis after a prophecy about her son
-q131,2,whe,Greek Mythology,whe_010,whe_010_c02,1.0,mantener,,Greek myth representation on pottery and public buildings,Greek myth representation on pottery and public buildings
+q131,2,whe,Greek Mythology,whe_010,whe_010_c02,1.0,descartar,Copia el texto (solape 1.00): todas sus palabras están en el fragmento,Greek myth representation on pottery and public buildings,
 q132,2,whe,Arachne,whe_160,whe_160_c01,0.86,descartar,Ambigua: Aracne y Minerva está en muchos documentos,Greek mythology weaving competition between Arachne and Minerva,
 q133,2,whe,Agamemnon (Play),whe_089,whe_089_c05,0.83,editar,Ambigua: no dice que es la obra de teatro,Agamemnon's return from Troy with Cassandra,tragedy in which the victorious king arrives home from Troy with Priam's prophetess daughter
 q134,2,whe,Romulus and Remus,whe_081,whe_081_c08,0.57,descartar,Ambigua: la loba y los gemelos está en muchos documentos,foundational myths of Rome with wolf suckling twins,
