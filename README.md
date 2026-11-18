@@ -37,7 +37,7 @@ Dos rasgos propios del tema:
 | Fecha | Entrega | Estado |
 |---|---|---|
 | Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Pendiente de confirmar |
-| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado (troceo de YouTube corregido, 84 queries) y `MILESTONE_1.md` en la rama `desarrollo`; falta fijar versiones y pasarlo a `main` |
+| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado (troceo de YouTube corregido, 84 queries y comprobación con 87) y `MILESTONE_1.md` en la rama `desarrollo`; falta pasarlo a `main` (fijar las versiones de `requirements.txt` queda para el Hito 2) |
 | Vie 4 dic, 23:59 | **Hito 2**: sistema RAG con LLM de pesos abiertos y base de datos vectorial | — |
 | Vie 18 dic, 23:59 | **Hito 3**: extensión (modelado de tópicos o LoRA/QLoRA) | — |
 | Enero | Entrega final (informe y código) y presentación | — |
@@ -215,7 +215,7 @@ El **fragmento** es la unidad que se indexa y se recupera. Se trocea porque los 
 - Ningún fragmento pasa de 1,4 veces el objetivo; si el último queda muy corto, se une al anterior.
 - En YouTube, las marcas de tiempo de los bloques de 30 segundos **no son secciones**: no cortan el fragmento ni quitan el solape, y solo sirven para que cada fragmento guarde el segundo en que empieza (`segundo`). Como los subtítulos automáticos no tienen puntuación, en los vídeos las frases de más de 42 palabras se parten en trozos de ese tamaño para que el solape funcione.
 
-Resultado: 19.792 fragmentos, de unas 238 palabras de media. Clásicos, WHE y YouTube se acercan al objetivo (264, 252 y 266 palabras de media) y casi siempre solapan (el 95 %, el 66 % y el 100 % de los pares de fragmentos seguidos); en Wikipedia hay muchos fragmentos cortos (artículos y secciones cortas). En una primera versión, los bloques de 30 segundos de YouTube contaban como secciones y los fragmentos de vídeo salían de 140 a 220 palabras y casi sin solape (2.740 fragmentos); se corrigió antes de entregar el Hito 1 para fijar la unidad de indexación, sin cambiar ningún fragmento de las otras fuentes. Si se vuelve a cambiar el troceo, `actualiza_source_chunk.py` reasigna el `source_chunk` de las queries (sección 5).
+Resultado: 19.792 fragmentos, de unas 238 palabras de media. Clásicos, WHE y YouTube se acercan al objetivo (264, 252 y 266 palabras de media), y solapan el 95 %, el 66 % y el 100 % de sus pares de fragmentos seguidos (en WHE menos, porque se empieza fragmento nuevo en cada sección); en Wikipedia hay muchos fragmentos cortos (artículos y secciones cortas). En una primera versión, los bloques de 30 segundos de YouTube contaban como secciones y los fragmentos de vídeo salían de 140 a 220 palabras y casi sin solape (2.740 fragmentos); se corrigió antes de entregar el Hito 1 para fijar la unidad de indexación, sin cambiar ningún fragmento de las otras fuentes. Si se vuelve a cambiar el troceo, `actualiza_source_chunk.py` reasigna el `source_chunk` de las queries (sección 5).
 
 ---
 
@@ -422,6 +422,8 @@ Todo está en `notebooks/hito1.ipynb`, que además explica en detalle cómo se c
 
 BM25 es **claramente mejor solo en MRR**: los dos encuentran el documento en un número parecido de queries, pero BM25 lo coloca más arriba. Con BM25, el documento relevante está entre los 100 primeros en el 98 % de las queries, lo que es buena base para una etapa de reordenación (*reranker*, Hito 2).
 
+**Comprobación con 87 queries** (las 84 más q024, q030 y q117, las tres descartadas por genéricas al ver que fallaban): BM25 mantiene la ventaja clara en MRR (+0,084 [0,023; 0,145]) y la gana también en Recall@50 (+0,046 [0,011; 0,092]) por una sola query, q024. Su Recall@10 baja 0,029 (a 0,816) y su MRR 0,022 (a 0,623). La elección de BM25 no cambia.
+
 Por fuente (Recall@10 con BM25): clásicos 0,71, WHE 1,00, Wikipedia 0,96 y YouTube 0,81. Los clásicos son la única fuente claramente más difícil. Las queries reescritas a mano también son más difíciles que las del LLM (con BM25, MRR de 0,46 frente a 0,70), y 12 de las 20 son de los clásicos.
 
 **Análisis de errores**: los dos métodos fallan en 12 de las 84 queries, 8 de ellas de los clásicos, pero solo 2 quedan fuera de los 100 primeros con los dos. Las causas:
@@ -442,7 +444,7 @@ Por fuente (Recall@10 con BM25): clásicos 0,71, WHE 1,00, Wikipedia 0,96 y YouT
   - singular y plural (*trojans* frente a *trojan*, *gods* frente a *god*): el *stemming* lo corrige y sube Recall@10, pero no se adoptó (sección 9);
   - errores en los subtítulos automáticos (41 % de los vídeos), que no tienen mayúsculas ni puntuación.
 - **Nombres romanos en los clásicos** (*Jove*, *Venus*): un método léxico no los relaciona con los griegos. Encaja con el Hito 2 (equivalencias de nombres y *embeddings*).
-- **Evaluación**: con 84 queries los intervalos son anchos (unos ±0,08 en Recall@10). Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas. Las queries comparten muchas palabras con su fragmento, lo que favorece a los métodos léxicos.
+- **Evaluación**: con 84 queries los intervalos son anchos (unos ±0,08 en Recall@10). Las variantes se eligieron con las mismas queries con las que se evalúa, así que los resultados pueden ser algo optimistas. Las queries comparten muchas palabras con su fragmento, lo que favorece a los métodos léxicos. Quitar las tres queries genéricas sube el Recall@10 de BM25 en 0,029 y su MRR en 0,022 (sección 9).
 - **Reparto de mitologías**: la nórdica pesa poco en clásicos y Wikipedia, y la romana casi no aparece en YouTube.
 - 17 de los 250 vídeos seleccionados no tenían subtítulos en inglés descargables.
 - Pendiente para el Hito 2: decidir qué nivel (experto o popular) se asigna a WHE y a Bulfinch para el experimento de cobertura.
@@ -466,4 +468,4 @@ Por todo ello, el texto descargado no se sube al repositorio.
 - **LLM de la UC3M (`llama3.1:8b`)**:
   - generación de las queries candidatas de evaluación, todas revisadas a mano (sección 8);
   - clasificación de los artículos de Wikipedia como dentro o fuera de tema, validada con 100 artículos etiquetados a mano y corregida con 255 etiquetas manuales (sección 4.1). Un segundo uso como rescate se probó y se descartó por sus malos resultados.
-- **Claude (Anthropic)**: asistencia en el diseño del pipeline, la escritura de los scripts y del notebook, la propuesta de decisiones en la revisión de queries y de artículos de Wikipedia (confirmadas por el grupo) y la redacción de la documentación. Todo el código se ejecutó y comprobó en local.
+- **Claude Code (Anthropic)**: asistencia en el diseño del pipeline, la escritura de los scripts y del notebook, la propuesta de decisiones en la revisión de queries y de artículos de Wikipedia (confirmadas por el grupo) y la redacción de la documentación. Todo el código se ejecutó y comprobó en local.
