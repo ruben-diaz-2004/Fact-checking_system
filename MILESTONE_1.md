@@ -1,89 +1,31 @@
 # Hito 1: colección, fragmentación y baseline de recuperación
 
-Fact-checking de mitología griega, romana y nórdica. Este fichero resume lo entregado en el Hito 1; el detalle está en el [README](README.md) y en el notebook [`notebooks/hito1.ipynb`](notebooks/hito1.ipynb), que está ejecutado entero y es lo que hay que revisar.
+Fact-checking de mitología griega, romana y nórdica. Detalle en el [README](README.md) y en [`notebooks/hito1.ipynb`](notebooks/hito1.ipynb) (ejecutado entero).
 
-## 1. Colección
+**1. Colección.** Corpus en inglés de **5.035 documentos** (≈ 4,26 M palabras, 19.792 fragmentos): Wikipedia (4.231, enciclopédica), textos clásicos de Gutenberg y Perseus (365, primaria), World History Encyclopedia (206, divulgativa) y transcripciones de 233 vídeos de YouTube revisados a mano (divulgativa). Wikipedia se obtuvo del árbol de categorías (6.839 artículos) y se limpió con un clasificador LLM, una regla de rescate y etiquetas manuales (96 % de acierto en 100 artículos de validación; 692 excluidos, en [`data/wikipedia_excluidos.csv`](data/wikipedia_excluidos.csv)). Los datos no se suben; se reconstruyen con `src/` (README, sección 5).
 
-Corpus en **inglés** de **5.035 documentos** (≈ 4,26 M palabras), de cuatro fuentes. Cada documento es una unidad con sentido propio: un artículo, un libro de la *Ilíada*, una fábula de Ovidio, un poema de la Edda, un vídeo.
+**2. Unidad de indexación: el fragmento** ([`src/troceo.py`](src/troceo.py)). ≈ 280 palabras con 15 % de solape, sin cortar frases y empezando fragmento nuevo en cada sección; máximo 1,4× el objetivo. En YouTube las frases sin puntuación se parten cada 42 palabras y se guarda el segundo de inicio. Cada fragmento lleva `doc_id`, `chunk_id`, fuente, tipo, título y sección.
 
-| Fuente | Tipo de fuente | Documentos | Palabras | Fragmentos |
-|---|---|---|---|---|
-| Wikipedia | enciclopédica | 4.231 | 2,67 M | 12.723 |
-| Textos clásicos (Homero, Hesíodo, Ovidio, Eddas, Apolodoro, Bulfinch) | primaria | 365 | 733 k | 3.383 |
-| YouTube (transcripciones de 12 canales) | divulgativa (experta o popular) | 233 | 535 k | 2.258 |
-| World History Encyclopedia | divulgativa | 206 | 319 k | 1.428 |
-| **Total** | | **5.035** | **≈ 4,26 M** | **19.792** |
+**3. Consultas.** [`data/queries.jsonl`](data/queries.jsonl), **84 queries** (28 clásicos, 23 Wikipedia, 21 YouTube, 12 WHE). Un LLM propuso 135 candidatas a partir de fragmentos al azar, pidiéndole que no copiara el texto; todas se revisaron a mano: 64 se mantienen, 20 se reescriben y 51 se descartan (motivos en `data/revision_queries_t*.csv`).
 
-- **Wikipedia**: árbol de categorías de las tres mitologías hasta profundidad 3 (6.839 artículos) y limpieza de los artículos fuera de tema con un clasificador LLM (`llama3.1:8b` de la UC3M), una regla de rescate y 255 etiquetas manuales. La decisión final acierta en el 96 % de 100 artículos de validación etiquetados a mano. Quedan fuera 692 artículos, listados con su motivo en [`data/wikipedia_excluidos.csv`](data/wikipedia_excluidos.csv). Después se aplican filtros de secciones de relleno, listas, tema del primer párrafo y longitud mínima.
-- **Clásicos**: Project Gutenberg y Perseus, sin notas ni introducciones de los traductores.
-- **WHE**: definiciones y artículos del índice del sitio que encajan con nuestras mitologías.
-- **YouTube**: 250 vídeos seleccionados y revisados a mano ([`data/youtube_seleccion.csv`](data/youtube_seleccion.csv)); se descargaron los subtítulos en inglés de 233.
+**4. Evaluación.** A nivel de documento: se recuperan 20·*k* fragmentos (mín. 200), cada documento puntúa por su mejor fragmento y se toman los *K* primeros. IC del 95 % por *bootstrap* (2.000 remuestreos). Sistemas: TF-IDF + coseno (Gensim) y BM25 (`bm25s`, k1 = 1,5, b = 0,75), sobre lemas de spaCy con el título delante. N-gramas, filtros, normalización nórdica, *stemming* y otros k1/b no mejoraron el MRR.
 
-Los datos descargados no se suben (pesan y tienen derechos de autor); se reconstruyen con los scripts de `src/` siguiendo la sección 5 del README.
-
-## 2. Unidad de indexación
-
-La unidad que se indexa y se recupera es el **fragmento**, y se mantendrá en todo el proyecto. Se trocea porque los documentos son muy desiguales (de decenas a decenas de miles de palabras) y porque la prueba citada tiene que ser corta. Implementación: [`src/troceo.py`](src/troceo.py).
-
-- Unas **280 palabras** por fragmento, con un **15 % de solape** entre fragmentos consecutivos.
-- No se cortan frases (solo las de más de 280 palabras, como versos sin puntuación). Al cambiar de sección se empieza fragmento nuevo, sin solape.
-- Ningún fragmento pasa de 1,4 veces el objetivo; si el último queda muy corto, se une al anterior.
-- En YouTube, los bloques de 30 segundos de los subtítulos no cuentan como secciones: solo sirven para guardar el segundo en que empieza cada fragmento. Como los subtítulos automáticos no tienen puntuación, las frases de más de 42 palabras se parten en trozos de ese tamaño para que el solape funcione.
-- Cada fragmento guarda el identificador de su documento (`doc_id`, p. ej. `wiki_78881`) y uno propio (`chunk_id`, p. ej. `wiki_78881_c11`), además de la fuente, el tipo de fuente, el título, la sección y, en YouTube, el segundo en que empieza.
-
-Resultado: 19.792 fragmentos, de 238 palabras de media. Clásicos, WHE y YouTube se acercan al objetivo (264, 252 y 266 palabras de media); en Wikipedia hay muchos fragmentos cortos por los artículos y secciones cortas.
-
-## 3. Consultas de prueba
-
-Fichero: [`data/queries.jsonl`](data/queries.jsonl), **84 queries**, con el formato pedido más la fuente:
-
-```json
-{"qid": "q003", "query": "What does Plutarch's account of Pan's death have to do with Jesus Christ and early Christianity?", "relevant_ids": ["wiki_78881"], "source_chunk": "wiki_78881_c11", "fuente": "wikipedia"}
-```
-
-- **Generación** ([`src/genera_queries.py`](src/genera_queries.py)): fragmentos al azar (semilla fija, al menos 150 palabras, un número fijo por fuente y nunca dos del mismo documento). Al LLM (`llama3.1:8b`, temperatura 0,3) se le pide la consulta que escribiría un usuario para encontrar esa información, **con sus propias palabras y sin copiar el texto**. Se hicieron dos tandas (45 + 90 candidatas).
-- **Revisión manual de las 135 candidatas**, cada una leída junto a su fragmento, comprobando entre otras cosas que no copiara el texto: 64 se mantienen, 20 se reescriben y 51 se descartan (sobre todo por ambiguas o porque su documento quedó fuera al limpiar Wikipedia). Seis de los descartes salen de una segunda revisión al terminar el hito: tres copiaban el texto y tres eran demasiado genéricas. Decisiones y motivos en [`data/revision_queries_t1.csv`](data/revision_queries_t1.csv) y [`data/revision_queries_t2.csv`](data/revision_queries_t2.csv).
-- **Reparto final**: 28 de clásicos, 23 de Wikipedia, 21 de YouTube y 12 de WHE.
-
-## 4. Evaluación
-
-Evaluación a nivel de **documento**, como se pide:
-
-1. Se recuperan fragmentos: para pedir *k* documentos se recuperan 20·*k* fragmentos (como mínimo 200).
-2. Cada documento recibe la puntuación de **su mejor fragmento**.
-3. Se eliminan los documentos repetidos y se toman los *K* primeros.
-4. Se calculan **Recall@5, @10, @50, @100 y MRR@10** sobre esa lista, con **intervalos de confianza del 95 % por *bootstrap*** (2.000 remuestreos de las queries) y comparaciones emparejadas entre sistemas.
-
-Las estadísticas de TF-IDF y BM25 (IDF y longitud media) se calculan **sobre los fragmentos**.
-
-**Sistemas**:
-- **TF-IDF + coseno**: Gensim (`TfidfModel` por defecto y `SparseMatrixSimilarity`).
-- **BM25**: `bm25s`, variante Lucene, k1 = 1,5, b = 0,75.
-- **Preprocesado** ([`src/preprocesado.py`](src/preprocesado.py)): lemas de spaCy (`en_core_web_sm`) con el título delante. Se compararon 12 variantes (N-gramas × filtros por frecuencia documental), la normalización de letras nórdicas, el *stemming* y un barrido de k1 y b. Ninguna mejora clara del MRR sobre la configuración simple, así que se queda sin N-gramas, sin filtros y sin normalización.
-
-## 5. Resultados
-
-84 queries; entre corchetes, el intervalo del 95 %.
+**5. Resultados** (entre corchetes, IC 95 %):
 
 | Métrica | TF-IDF | BM25 | BM25 − TF-IDF |
 |---|---|---|---|
-| Recall@5 | 0,774 [0,679; 0,857] | **0,810** [0,726; 0,893] | +0,036 [−0,024; 0,095] |
-| Recall@10 | 0,821 [0,738; 0,893] | **0,845** [0,762; 0,917] | +0,024 [−0,024; 0,071] |
-| Recall@50 | 0,917 [0,857; 0,976] | **0,952** [0,905; 0,988] | +0,036 [0,000; 0,083] |
-| Recall@100 | 0,952 [0,905; 0,988] | **0,976** [0,940; 1,000] | +0,024 [0,000; 0,060] |
-| MRR@10 | 0,558 [0,473; 0,644] | **0,645** [0,561; 0,733] | +0,087 [0,027; 0,152] |
+| Recall@5 | 0,774 | **0,810** | +0,036 [−0,024; 0,095] |
+| Recall@10 | 0,821 | **0,845** | +0,024 [−0,024; 0,071] |
+| Recall@50 | 0,917 | **0,952** | +0,036 [0,000; 0,083] |
+| Recall@100 | 0,952 | **0,976** | +0,024 [0,000; 0,060] |
+| MRR@10 | 0,558 | **0,645** | +0,087 [0,027; 0,152] |
 
-- **BM25 es claramente mejor solo en MRR**: los dos encuentran el documento en un número parecido de queries, pero BM25 lo coloca más arriba. Con BM25 el documento relevante está entre los 100 primeros en el 98 % de las queries. Es el baseline con el que se comparará el RAG del Hito 2.
-- **Por fuente** (Recall@10 con BM25): clásicos 0,71, YouTube 0,81, Wikipedia 0,96 y WHE 1,00. Los clásicos son la fuente más difícil.
-- **Errores** (12 queries que fallan los dos métodos en el top 10, 8 de ellas de los clásicos): sobre todo gana otro documento del mismo tema (p. ej., el artículo de Wikipedia frente al libro de Ovidio del que sale la query); también hay queries con otras palabras que el texto (*islands of the blessed* frente a *Fortunate Isles*).
+BM25 solo es claramente mejor en MRR (coloca más arriba el documento) y será el baseline del Hito 2. Por fuente (Recall@10, BM25): clásicos 0,71, YouTube 0,81, Wikipedia 0,96, WHE 1,00. Los fallos suelen deberse a otro documento del mismo tema o a vocabulario distinto (*islands of the blessed* / *Fortunate Isles*).
 
-## 6. Limitaciones
+*Comprobación con 87 queries.* Tres queries se descartaron por genéricas al ver que fallaban con los dos métodos (q024, q030, q117). Al reincorporarlas, BM25 sigue por encima en todas las métricas y su ventaja en MRR se mantiene (+0,084 [0,023; 0,145]); Recall@50 pasa también a ser diferencia clara (+0,046 [0,011; 0,092]), por una sola query (q024). El Recall@10 de BM25 baja 0,029 (a 0,816) y su MRR 0,022 (a 0,623). La elección de BM25 no cambia.
 
-- Con 84 queries los intervalos son anchos (unos ±0,08 en Recall@10), y las variantes se eligieron con las mismas queries con las que se evalúa.
-- Las tres queries demasiado genéricas se detectaron porque fallaban con los dos métodos, así que quitarlas hace los resultados algo optimistas.
-- La evaluación *known-item* cuenta como fallo otro documento que también responde, y las queries comparten bastantes palabras con su fragmento, lo que favorece a los métodos léxicos.
-- No se ha medido la evaluación opcional a nivel de fragmento (si el `source_chunk` aparece entre los *K* primeros).
+**Limitaciones**: con 84 queries los IC son anchos (±0,08 en Recall@10); las variantes se eligieron con las mismas queries; quitar las tres queries genéricas hace los resultados algo optimistas (ver arriba); la evaluación *known-item* penaliza otros documentos que también responden, y el solape léxico query–fragmento favorece a los métodos léxicos.
 
-## 7. Cómo reproducirlo
+**6. Uso de IA generativa.** (a) **En el sistema**: `llama3.1:8b` (servidor de la UC3M) para clasificar artículos de Wikipedia fuera de tema y para proponer las queries candidatas (temperatura 0,3); en ambos casos la salida se validó a mano (etiquetas manuales y revisión de las 135 queries). (b) **Como asistente**: Claude Code (Anthropic) para ayudar a escribir y depurar scripts y el notebook, y a redactar la documentación. Todo el código y los resultados se revisaron y ejecutaron por el equipo, que asume su autoría y corrección.
 
-Instalación en la sección 3 del README (Python 3.10, `pip install -r requirements.txt` y `python -m spacy download en_core_web_sm`). La construcción del corpus, paso a paso, está en la sección 5. Con `data/processed/` generado, se abre `notebooks/hito1.ipynb` y se ejecuta entero (*Restart + Run All*, unos minutos).
+**Reproducción**: Python 3.10, `pip install -r requirements.txt`, `python -m spacy download en_core_web_sm`; construir el corpus (README, sección 5) y ejecutar el notebook entero.
