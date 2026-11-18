@@ -37,7 +37,7 @@ Dos rasgos propios del tema:
 | Fecha | Entrega | Estado |
 |---|---|---|
 | Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Pendiente de confirmar |
-| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado en la rama `desarrollo` (troceo de YouTube corregido, 84 queries); falta `MILESTONE_1.md`, fijar versiones y pasarlo a `main` |
+| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado (troceo de YouTube corregido, 84 queries) y `MILESTONE_1.md` en la rama `desarrollo`; falta fijar versiones y pasarlo a `main` |
 | Vie 4 dic, 23:59 | **Hito 2**: sistema RAG con LLM de pesos abiertos y base de datos vectorial | — |
 | Vie 18 dic, 23:59 | **Hito 3**: extensión (modelado de tópicos o LoRA/QLoRA) | — |
 | Enero | Entrega final (informe y código) y presentación | — |
@@ -51,6 +51,7 @@ Los hitos se corrigen sobre la rama **`main`** en el commit indicado en Aula Glo
 ```
 Fact-checking_system/
 ├── README.md
+├── MILESTONE_1.md            # resumen de la entrega del Hito 1
 ├── requirements.txt
 ├── .gitignore
 ├── .env                      # NO se sube: clave de la API del LLM de la UC3M
@@ -327,7 +328,7 @@ python src/crea_queries.py                       # junta las tablas de revisión
 
 **Tokens** (`data/processed/chunks_tokens.jsonl`): `chunk_id`, `doc_id` y `tokens`, la lista de términos tras el preprocesado.
 
-**Query** (`data/queries.jsonl`), con el formato del enunciado más dos campos:
+**Query** (`data/queries.jsonl`), con el formato del enunciado más un campo (`fuente`):
 
 ```json
 {"qid": "q002", "query": "What is the origin of the name \"Opuntii\" in ancient Greek mythology?",
