@@ -36,8 +36,8 @@ Dos rasgos propios del tema:
 
 | Fecha | Entrega | Estado |
 |---|---|---|
-| Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Pendiente de confirmar |
-| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Notebook reejecutado (troceo de YouTube corregido, 84 queries y comprobación con 87) y `MILESTONE_1.md` en la rama `desarrollo`; falta pasarlo a `main` (fijar las versiones de `requirements.txt` queda para el Hito 2) |
+| Lun 16 nov, 23:59 | Grupo, aplicación y repositorio en Aula Global | Hecho |
+| Jue 19 nov, 23:59 | **Hito 1**: corpus, preprocesado y baselines TF-IDF y BM25 | Entregado: rama `main`, resumen en `MILESTONE_1.md` (fijar las versiones de `requirements.txt` queda para el Hito 2) |
 | Vie 4 dic, 23:59 | **Hito 2**: sistema RAG con LLM de pesos abiertos y base de datos vectorial | — |
 | Vie 18 dic, 23:59 | **Hito 3**: extensión (modelado de tópicos o LoRA/QLoRA) | — |
 | Enero | Entrega final (informe y código) y presentación | — |
