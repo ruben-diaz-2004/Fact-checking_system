@@ -1,0 +1,51 @@
+aid,etiqueta,afirmacion_en,afirmacion_es
+a001,verdadero,"Opus I, king of the Epeians, was the son of Zeus by Protogeneia, daughter of Deucalion.","Opus I, rey de los epeos, fue hijo de Zeus y de Protogenia, hija de Deucalión."
+a002,falso,"Opus I, king of the Epeians, was the son of Poseidon by Protogeneia, daughter of Deucalion.","Opus I, rey de los epeos, fue hijo de Poseidón y de Protogenia, hija de Deucalión."
+a007,verdadero,"Alope, daughter of Cercyon, gave birth to Hippothoon after being seduced by Poseidon in the guise of a kingfisher.","Álope, hija de Cerción, dio a luz a Hipotoonte después de ser seducida por Poseidón, que había tomado la forma de un martín pescador."
+a008,falso,"Alope, daughter of Actor, gave birth to Hippothoon after being seduced by Poseidon in the guise of a kingfisher.","Álope, hija de Áctor, dio a luz a Hipotoonte después de ser seducida por Poseidón, que había tomado la forma de un martín pescador."
+a021,verdadero,"Helgi, Hjorvarth's son, foresaw his death and spoke to Hethin about it.","Helgi, hijo de Hjorvarth, previó su muerte y habló de ello con Hethin."
+a022,falso,Hjordis' son Helgi foresaw his death and spoke to Hethin about it.,"Helgi, hijo de Hjördis, previó su muerte y habló de ello con Hethin."
+a023,verdadero,"Apollo went up the green, holy hills near Mycalessus.",Apolo subió las colinas verdes y sagradas cerca de Micaleso.
+a024,falso,"Dionysus went up the green, holy hills near Mycalessus.",Dionisio subió las colinas verdes y sagradas cerca de Micaleso.
+a033,verdadero,Achilles killed seven brothers of Andromache as they were with their sheep and cattle.,Aquiles mató a siete hermanos de Andrómaca mientras estaban con sus ovejas y ganado.
+a034,falso,Odysseus killed seven brothers of Andromache as they were with their sheep and cattle.,Odiseo mató a siete hermanos de Andrómaca mientras estaban con sus ovejas y ganado.
+a043,verdadero,Circe was exiled by her father and took residence on an island with her many nymph companions.,Circe fue desterrada por su padre y se instaló en una isla con sus muchas ninfas compañeras.
+a044,falso,Circe was exiled by her mother and took residence on an island with her many nymph companions.,Circe fue desterrada por su madre y se instaló en una isla con sus muchas ninfas compañeras.
+a045,verdadero,"Jason, who had been sent away as a child, returned home where King Pelias was hosting games in honor of Poseidon.","Jasón, al que habían enviado lejos de niño, volvió a casa cuando el rey Pelias celebraba unos juegos en honor de Poseidón."
+a046,falso,"Jason, who had been sent away as a child, returned home where King Pelias was hosting games in honor of Zeus.","Jasón, al que habían enviado lejos de niño, volvió a casa cuando el rey Pelias celebraba unos juegos en honor de Zeus."
+a079,verdadero,The Lyon cup is decorated with an eagle confronting a serpent.,La copa de Lyon está decorada con un águila que se enfrenta a una serpiente.
+a080,falso,The Lyon cup is decorated with a bear confronting a serpent.,La copa de Lyon está decorada con un oso que se enfrenta a una serpiente.
+a083,verdadero,"Pyrrhus, a mortal man from Phrygia, attempted to assault Rhea, the mother of the gods.","Pirro, un hombre mortal de Frigia, intentó forzar a Rea, la madre de los dioses."
+a084,falso,"Pyrrhus, a mortal man from Arcadia, attempted to assault Rhea, the mother of the gods.","Pirro, un hombre mortal de Arcadia, intentó forzar a Rea, la madre de los dioses."
+a091,verdadero,"Hector and Ajax fought fiercely around the same ship, and Hector could not set it on fire.","Héctor y Áyax lucharon ferozmente alrededor de la misma nave, y Héctor no pudo incendiarla."
+a092,falso,"Hector and Ajax fought fiercely around the same ship, and Hector managed to set it on fire.","Héctor y Áyax lucharon ferozmente alrededor de la misma nave, y Héctor logró incendiarla."
+a107,verdadero,Famine executes the orders of Ceres.,El Hambre cumple las órdenes de Ceres.
+a108,falso,Famine executes the orders of Juno.,El Hambre cumple las órdenes de Juno.
+a117,verdadero,"In the plague of Aegina, the disease first struck the animals and only then the people.","En la peste de Egina, la enfermedad atacó primero a los animales y solo después a las personas."
+a118,falso,"In the plague of Aegina, the disease first struck the people and only then the animals.","En la peste de Egina, la enfermedad atacó primero a las personas y solo después a los animales."
+a121,verdadero,Neptune was still persecuting Odysseus without ceasing and would not let him get home.,Neptuno seguía persiguiendo a Odiseo sin descanso y no le dejaba volver a casa.
+a122,falso,Apollo was still persecuting Odysseus without ceasing and would not let him get home.,Apolo seguía persiguiendo a Odiseo sin descanso y no le dejaba volver a casa.
+a129,verdadero,Minos's son Androgeus died while he was in Athens.,"Androgeo, el hijo de Minos, murió mientras estaba en Atenas."
+a130,falso,Minos's son Androgeus died while he was in Thebes.,"Androgeo, el hijo de Minos, murió mientras estaba en Tebas."
+a131,verdadero,"The original Germanic god of the sky was Tyr (Tiwaz), not Odin.",El dios germánico original del cielo era Tyr (Tiwaz) y no Odín.
+a132,falso,"The original Germanic god of the sky was Odin, not Tyr (Tiwaz).","El dios germánico original del cielo era Odín, no Tyr (Tiwaz)."
+a133,verdadero,"Odin uses the Old Norse word thulr, perhaps a kind of sage or poet, of himself.","Odín se aplica a sí mismo la palabra nórdica antigua thulr, quizá una especie de sabio o poeta."
+a134,falso,"Thor uses the Old Norse word thulr, perhaps a kind of sage or poet, of himself.","Thor se aplica a sí mismo la palabra nórdica antigua thulr, quizá una especie de sabio o poeta."
+a139,verdadero,"In Book X of The Aeneid, Turnus kills Pallas, the son of Evander.","En el libro X de la Eneida, Turno mata a Palante, el hijo de Evandro."
+a140,falso,"In Book X of The Aeneid, Turnus kills Pallas, the son of Jupiter.","En el libro X de la Eneida, Turno mata a Palante, el hijo de Júpiter."
+a157,verdadero,"In Greek mythology, a soul without an obol coin would wait on the shores for 100 years before being taken by Charon.","En la mitología griega, un alma sin la moneda del óbolo tenía que esperar 100 años en la orilla antes de que Caronte la llevara."
+a158,falso,"In Greek mythology, a soul without an obol coin would wait on the shores for 300 years before being taken by Charon.","En la mitología griega, un alma sin la moneda del óbolo tenía que esperar 300 años en la orilla antes de que Caronte la llevara."
+a159,verdadero,The Isthmian games were held every two years in honour of Poseidon near Corinth.,Los juegos ístmicos se celebraban cada dos años cerca de Corinto en honor de Poseidón.
+a160,falso,The Isthmian games were held every two years in honour of Athena near Corinth.,Los juegos ístmicos se celebraban cada dos años cerca de Corinto en honor de Atenea.
+a167,verdadero,"In Aeschylus' Agamemnon, Agamemnon arrives home in a cart accompanied by Cassandra, daughter of Priam.","En la obra de Esquilo Agamenón, Agamenón llega a casa en un carro acompañado por Casandra, hija de Príamo."
+a168,falso,"In Aeschylus' Agamemnon, Agamemnon arrives home in a cart accompanied by Polyxena, daughter of Priam.","En la obra de Esquilo Agamenón, Agamenón llega a casa en un carro acompañado por Polixena, hija de Príamo."
+a170,sin_informacion,The sun god Ra was said to have created the world and all its inhabitants through his great primeval act of creation.,Se decía que el dios del sol Ra había creado el mundo y a todos sus habitantes en un gran acto primigenio de creación.
+a172,sin_informacion,"After the death of his friend Enkidu, Gilgamesh, king of Uruk, set out to find the secret of immortality.","Después de la muerte de su amigo Enkidu, Gilgamesh, rey de Uruk, se puso en marcha para encontrar el secreto de la inmortalidad."
+a173,sin_informacion,"Ravana, the king of Lanka, is a powerful Rakshasa and the primary antagonist in the Hindu epic Ramayana.","Rávana, el rey de Lanka, es un poderoso rakshasa y el principal antagonista de la epopeya hindú del Ramayana."
+a175,sin_informacion,"Huitzilopochtli, the Aztec sun god, was said to have guided his people out of the mythical city of Aztlan.","Se decía que Huitzilopochtli, el dios solar azteca, guió a su pueblo fuera de la ciudad mítica de Aztlán."
+a186,sin_informacion,"Vila are nature spirits in Slavic mythology, known for their mischievous and sometimes benevolent behavior towards humans.","Las vila son espíritus de la naturaleza en la mitología eslava, conocidas por su comportamiento travieso y a veces benévolo hacia los humanos."
+a189,sin_informacion,"Zeus often visited his close friend and fellow philosopher, Theodoros of Arcadia, at the Oracle of Delphi.","Zeus solía visitar en el oráculo de Delfos a su amigo íntimo y compañero filósofo, Teodoro de Arcadia."
+a193,sin_informacion,"Artemis spent her winter solstice on the mountain of Elyria, gazing at the starlight within her Lyra Sceptre.","Artemisa pasaba el solsticio de invierno en el monte Eliria, contemplando la luz de las estrellas dentro de su Cetro de Lira."
+a198,sin_informacion,Achilles often practised archery in the sacred wood of Melantheia with his companion Kallias.,Aquiles solía practicar el tiro con arco en el bosque sagrado de Melantea con su compañero Calias.
+a199,sin_informacion,Jupiter's favored amulet was the golden Astraea pendant given to him by the Sibyl of Cumae.,"El amuleto favorito de Júpiter era el colgante de oro de Astrea, que le había regalado la Sibila de Cumas."
+a200,sin_informacion,Venus was often depicted wearing the rare Golden Oakleaf of Ephesus.,A Venus se la representaba a menudo con la rara Hoja de Roble Dorada de Éfeso.
